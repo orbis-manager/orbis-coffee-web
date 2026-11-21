@@ -1,0 +1,73 @@
+[
+  {
+    "slug": "buon-ma-thuot-peaberry-culi",
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuD9jii5w_r9dbhdbQ0icjwdg5Acro07U3l-pfz_C1K04_YATONjVLMC32u588M5AtO52uYfjP3U8R4_1ZagwEQo9uZkvgD3IND8jH-thNLgwXffZZ9OUwtf5AO8gz_OybgrjSSu0hxfItMMXlfmmYB8l94ic-LbpZATmaSXsmHNGXD3wdcNdgPYAOjuyBb0fbO7-3YH2_Krypi2Z1ysLmk-tSfm_LIRyS3NFioXRi0G",
+    "price": 285000,
+    "rating": 4.9,
+    "badge": { "vi": "Đơn Nguồn Gốc", "en": "Single Origin" },
+    "category": { "vi": "Heritage Robusta • 340g", "en": "Heritage Robusta • 340g" },
+    "name": {
+      "vi": "ORBIS Buôn Ma Thuột Peaberry (Culi)",
+      "en": "ORBIS Buôn Ma Thuột Peaberry (Culi)"
+    },
+    "description": {
+      "vi": "Những hạt Culi tròn trịa quý hiếm với hương sô-cô-la đen đậm đà, vị hạnh nhân nướng và hậu vị ngọt êm sâu lắng.",
+      "en": "Rare round peaberry beans with deep dark chocolate notes, roasted almond, and a smooth sweet finish."
+    }
+  },
+  {
+    "slug": "cau-dat-bourbon",
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCeDap_BWar9DMOShmKtLw8XwXVw48yrLH3qEX2TGPBJVoPe1-bk_KmbzfMDB-aXi90F-S4LZXpqt3PLygxpMd-wCoscG3aExUrIYsTvjOB9TK56EKEOzt1kzTNyPqE8dwvLkWV3qTz_NC-VIf4ZDoOVfdFYZQl8cYtFjmc5KbZ3nNTnDNOGVwmaibD4P4E3hHqhcywSFOtWVCUWtpCESrsYkh5ySMH-zTfO70nMmh3",
+    "price": 340000,
+    "rating": 5.0,
+    "badge": { "vi": "Độ Cao Nguyên Bản", "en": "High-Altitude Origin" },
+    "category": { "vi": "Specialty Arabica • 250g", "en": "Specialty Arabica • 250g" },
+    "name": { "vi": "ORBIS Cầu Đất Bourbon", "en": "ORBIS Cầu Đất Bourbon" },
+    "description": {
+      "vi": "Sinh trưởng ở độ cao 1.600m giữa sương mây bồng bềnh; vị chua thanh hoa quả, hương hoa nhài tinh khôi cùng hậu vị mật ong rừng.",
+      "en": "Grown at 1,600m amid rolling highland mist; bright fruity acidity, delicate jasmine florals, and a wild honey finish."
+    }
+  },
+  {
+    "slug": "golden-phin-reserve",
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCISF25-Z5RXgaQUeGJj-mhawrevg8CbU97eVkvjrEIbqsRCkuY6jJCC1h3JTqi7ZZy7VpoannkIv_DVafAd5XVo5MUwpEmiL2xe395IGjipw_ZzqWhHxLkemALtXAzLC-t_Gy7TCTNUfnr2C91ECRzCURI0SQYJnnGVRS5FAJlijeY_UBj71dkbHExz-_yJGH-EiVLZhXwLU3LjM1xIyDp0GwTq_x_nfoz_iWxIqUs",
+    "price": 310000,
+    "rating": 4.9,
+    "badge": { "vi": "Dòng Phối Trộn Đặc Trưng", "en": "Signature Blend" },
+    "category": {
+      "vi": "Signature Master Blend • 340g",
+      "en": "Signature Master Blend • 340g"
+    },
+    "name": { "vi": "ORBIS Golden Phin Reserve", "en": "ORBIS Golden Phin Reserve" },
+    "description": {
+      "vi": "Sự kết hợp cân bằng hoàn hảo giữa chiều sâu đậm đà của Culi Robusta và nét thanh tao từ Arabica Cầu Đất. Lý tưởng cho phin truyền thống hoặc espresso.",
+      "en": "A perfectly balanced blend of bold Culi Robusta depth and elegant Cầu Đất Arabica. Ideal for traditional phin or espresso."
+    }
+  },
+  {
+    "slug": "cu-mgar-fine-robusta",
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuD9jii5w_r9dbhdbQ0icjwdg5Acro07U3l-pfz_C1K04_YATONjVLMC32u588M5AtO52uYfjP3U8R4_1ZagwEQo9uZkvgD3IND8jH-thNLgwXffZZ9OUwtf5AO8gz_OybgrjSSu0hxfItMMXlfmmYB8l94ic-LbpZATmaSXsmHNGXD3wdcNdgPYAOjuyBb0fbO7-3YH2_Krypi2Z1ysLmk-tSfm_LIRyS3NFioXRi0G",
+    "price": 265000,
+    "rating": 4.8,
+    "badge": { "vi": "Chọn Lọc Đặc Biệt", "en": "Special Selection" },
+    "category": { "vi": "Fine Robusta • 250g", "en": "Fine Robusta • 250g" },
+    "name": { "vi": "ORBIS Cư M'gar Fine Robusta", "en": "ORBIS Cư M'gar Fine Robusta" },
+    "description": {
+      "vi": "Hạt Robusta tuyển chọn từ vùng đất đỏ Cư M'gar, hương đất nồng ấm quyện cùng vị sô-cô-la sữa và hậu vị mạch nha ngọt dịu.",
+      "en": "Selectively harvested Robusta from the red soil of Cư M'gar, with warm earthy notes, milk chocolate, and a gentle malty sweetness."
+    }
+  },
+  {
+    "slug": "da-lat-honey-process",
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCISF25-Z5RXgaQUeGJj-mhawrevg8CbU97eVkvjrEIbqsRCkuY6jJCC1h3JTqi7ZZy7VpoannkIv_DVafAd5XVo5MUwpEmiL2xe395IGjipw_ZzqWhHxLkemALtXAzLC-t_Gy7TCTNUfnr2C91ECRzCURI0SQYJnnGVRS5FAJlijeY_UBj71dkbHExz-_yJGH-EiVLZhXwLU3LjM1xIyDp0GwTq_x_nfoz_iWxIqUs",
+    "price": 355000,
+    "rating": 4.9,
+    "badge": { "vi": "Sơ Chế Mật Ong", "en": "Honey Processed" },
+    "category": { "vi": "Honey Process Arabica • 250g", "en": "Honey Process Arabica • 250g" },
+    "name": { "vi": "ORBIS Đà Lạt Honey Process", "en": "ORBIS Đà Lạt Honey Process" },
+    "description": {
+      "vi": "Arabica Đà Lạt sơ chế mật ong thủ công, giữ trọn vị ngọt caramel, hương mơ chín và hậu vị kéo dài êm ái.",
+      "en": "Hand-crafted honey-processed Đà Lạt Arabica, preserving rich caramel sweetness, ripe apricot notes, and a long, smooth finish."
+    }
+  }
+]
