@@ -3,19 +3,14 @@ import type { ComponentPropsWithoutRef } from "react";
 /**
  * Coffee bean mark (from sample/logo/mark-espresso.svg), recolored to
  * currentColor so it inherits text color — defaults to on-surface to match
- * the wordmark's ink color.
+ * the wordmark's ink color
  */
 export default function Logo({
   className = "text-on-surface",
   ...props
 }: ComponentPropsWithoutRef<"svg">) {
   return (
-    <svg
-      viewBox="0 0 200 200"
-      fill="none"
-      className={className}
-      {...props}
-    >
+    <svg viewBox="0 0 200 200" fill="none" className={className} {...props}>
       <defs>
         <mask id="logo-bean-mask">
           <rect width="200" height="200" fill="#fff" />
