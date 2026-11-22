@@ -1,8 +1,8 @@
 import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Icon from "@/components/ui/Icon";
 import Text from "@/components/ui/Text";
+import Link from "next/link";
 import type { Product } from "@/content/products";
 import { formatVnd } from "@/lib/utils";
 import type { Locale } from "@/lib/i18n";
@@ -17,6 +17,11 @@ export default function ProductCard({
   viewDetailLabel: string;
 }) {
   return (
+    <Link
+      href={`/${locale}/san-pham/${product.slug}`}
+      aria-label={`${viewDetailLabel}: ${product.name[locale]}`}
+      className="block h-full rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+    >
     <Card hoverLift className="flex flex-col h-full">
       <div className="relative w-full aspect-[4/5] bg-surface-container-low overflow-hidden group">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -55,15 +60,12 @@ export default function ProductCard({
           <Text as="span" scale="title-lg" className="font-bold">
             {formatVnd(product.price)}
           </Text>
-          <Button
-            href={`/${locale}/san-pham/${product.slug}`}
-            variant="primary"
-            size="sm"
-          >
+          <span className="inline-flex items-center justify-center gap-space-xs rounded font-sans font-semibold uppercase tracking-[0.08em] transition-all duration-200 bg-primary text-on-primary hover:bg-secondary shadow-[0_4px_20px_-2px_rgba(89,64,29,0.18)] h-10 px-space-md text-label-md">
             {viewDetailLabel}
-          </Button>
+          </span>
         </div>
       </div>
     </Card>
+    </Link>
   );
 }
