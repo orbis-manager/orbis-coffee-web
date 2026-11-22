@@ -10,6 +10,15 @@ const paths = {
   flame:
     "M12 2c1 3-2 4-2 7a3 3 0 0 0 6 0c0-1-.5-2-1-2.5 2 1 3 3.5 3 5.5a6 6 0 0 1-12 0c0-4 2-6 2-6s0 2 1 2c0-3-1-4 3-6Z",
   lock: "M6 11V8a6 6 0 1 1 12 0v3M5 11h14v9H5v-9Zm7 4v2",
+  storefront: "M3 10h18l-1.5-6h-15L3 10Zm1 0v10h16V10M8 20v-6h8v6M3 10a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0",
+  mail: "M3 5h18v14H3V5Zm0 1 9 7 9-7",
+  phone: "M7 3H5a2 2 0 0 0-2 2c0 8.8 7.2 16 16 16a2 2 0 0 0 2-2v-2l-5-2-2 3a14 14 0 0 1-6-6l3-2-2-5Z",
+  mapPin: "M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Zm-5 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z",
+  clock: "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Zm0-16v6l4 2",
+  coffee: "M4 8h13v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8Zm13 2h2a2 2 0 1 1 0 4h-2M7 4c-1 1 1 1 0 3m5-3c-1 1 1 1 0 3",
+  check: "m5 12 4 4L19 6",
+  arrowUpRight: "M7 17 17 7M7 7h10v10",
+  shield: "M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Zm-3-11 2 2 4-4",
 } as const;
 
 export type IconName = keyof typeof paths;
