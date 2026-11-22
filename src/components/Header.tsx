@@ -23,7 +23,7 @@ export default function Header({
     <header className="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(89,64,29,0.04)]">
       <div className="h-20 max-w-[1200px] mx-auto px-gutter-desktop flex items-center justify-between">
         <Link href={`/${locale}`} className="flex items-center gap-space-sm focus:outline-none">
-          <Logo className="h-9 w-9 shrink-0 text-on-surface" />
+          <Logo className="h-9 w-9 shrink-0" />
           <span className="flex flex-col items-start">
             <span className="font-display text-headline-sm tracking-tight text-on-surface uppercase">
               ORBIS COFFEE
