@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "@/components/Logo";
 import LangSwitcher from "@/components/LangSwitcher";
+import HeaderNav from "@/components/HeaderNav";
 import Button from "@/components/ui/Button";
 import type { Dictionary } from "@/content/dictionary";
 import type { Locale } from "@/lib/i18n";
@@ -13,9 +14,9 @@ export default function Header({
   dict: Dictionary;
 }) {
   const navItems = [
-    { href: `/${locale}`, label: dict.nav.home },
-    { href: `/${locale}/san-pham`, label: dict.nav.products },
-    { href: `/${locale}/lien-he`, label: dict.nav.contact },
+    { key: "home" as const, href: `/${locale}`, label: dict.nav.home },
+    { key: "products" as const, href: `/${locale}/san-pham`, label: dict.nav.products },
+    { key: "contact" as const, href: `/${locale}/lien-he`, label: dict.nav.contact },
   ];
 
   return (
@@ -33,17 +34,7 @@ export default function Header({
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-space-xl">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="font-sans text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors duration-200"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <HeaderNav locale={locale} items={navItems} />
 
         <div className="flex items-center gap-space-lg">
           <LangSwitcher current={locale} />
