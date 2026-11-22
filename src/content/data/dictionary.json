@@ -12,6 +12,10 @@
     "hero": {
       "eyebrow": "Cà Phê Đặc Sản Việt Nam — Buôn Ma Thuột & Đà Lạt",
       "title": "Hương Vị Cà Phê Việt, Tinh Hoa Hội Tụ.",
+      "titleLead1": "Hương Vị ",
+      "titleBrush": "Cà Phê Việt",
+      "titleLine1Suffix": ",",
+      "titleLine2": "Tinh Hoa Hội Tụ.",
       "description": "Những hạt Robusta thượng hạng từ cao nguyên đất đỏ và Arabica vi khí hậu Cầu Đất, được rang mộc thủ công nhằm tôn vinh nét văn hóa thưởng thức cà phê nguyên bản.",
       "ctaPrimary": "Khám Phá Sản Phẩm",
       "ctaSecondary": "Câu Chuyện Của Chúng Tôi",
@@ -115,6 +119,10 @@
     "hero": {
       "eyebrow": "Vietnamese Specialty Coffee — Buôn Ma Thuột & Đà Lạt",
       "title": "The Taste of Vietnam, Refined.",
+      "titleLead1": "The Taste of ",
+      "titleBrush": "Vietnam",
+      "titleLine1Suffix": ",",
+      "titleLine2": "Refined.",
       "description": "Premium Robusta from the red basalt highlands and micro-climate Cầu Đất Arabica, hand roasted to honor authentic Vietnamese coffee culture.",
       "ctaPrimary": "Explore Products",
       "ctaSecondary": "Our Story",

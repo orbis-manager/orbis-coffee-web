@@ -82,7 +82,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
   }
 
   return (
-    <section className="lg:col-span-7 bg-surface-container-lowest rounded-xl p-space-lg sm:p-space-xl shadow-sm">
+    <section className="bg-surface-container-lowest rounded-xl p-space-lg sm:p-space-xl shadow-sm">
       <div className="mb-space-lg flex flex-col gap-space-xs">
         <Text as="span" scale="label-sm" className="text-secondary uppercase tracking-[0.16em]">{labels.eyebrow}</Text>
         <Text as="h2" scale="headline-md" className="text-on-surface">{labels.title}</Text>

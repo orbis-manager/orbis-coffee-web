@@ -16,6 +16,15 @@
     "description": {
       "vi": "Những hạt Culi tròn trịa quý hiếm với hương sô-cô-la đen đậm đà, vị hạnh nhân nướng và hậu vị ngọt êm sâu lắng.",
       "en": "Rare round peaberry beans with deep dark chocolate notes, roasted almond, and a smooth sweet finish."
+    },
+    "origin": { "vi": "Buôn Ma Thuột", "en": "Buôn Ma Thuột" },
+    "highlights": {
+      "vi": ["Hạt culi tuyển tay", "Rang vừa đậm"],
+      "en": ["Hand-sorted peaberry", "Medium-dark roast"]
+    },
+    "notes": {
+      "vi": ["Sô-cô-la đen", "Hạnh nhân nướng"],
+      "en": ["Dark chocolate", "Roasted almond"]
     }
   },
   {
@@ -32,6 +41,15 @@
     "description": {
       "vi": "Sinh trưởng ở độ cao 1.600m giữa sương mây bồng bềnh; vị chua thanh hoa quả, hương hoa nhài tinh khôi cùng hậu vị mật ong rừng.",
       "en": "Grown at 1,600m amid rolling highland mist; bright fruity acidity, delicate jasmine florals, and a wild honey finish."
+    },
+    "origin": { "vi": "Cầu Đất · Đà Lạt", "en": "Cầu Đất · Đà Lạt" },
+    "highlights": {
+      "vi": ["Trồng ở độ cao 1.600m", "Sơ chế ướt"],
+      "en": ["Grown at 1,600m", "Washed process"]
+    },
+    "notes": {
+      "vi": ["Hoa nhài", "Mật ong rừng", "Quả mọng"],
+      "en": ["Jasmine", "Wild honey", "Berry"]
     }
   },
   {
@@ -51,7 +69,17 @@
     "description": {
       "vi": "Sự kết hợp cân bằng hoàn hảo giữa chiều sâu đậm đà của Culi Robusta và nét thanh tao từ Arabica Cầu Đất. Lý tưởng cho phin truyền thống hoặc espresso.",
       "en": "A perfectly balanced blend of bold Culi Robusta depth and elegant Cầu Đất Arabica. Ideal for traditional phin or espresso."
-    }
+    },
+    "origin": { "vi": "Đà Lạt · Đắk Lắk", "en": "Đà Lạt · Đắk Lắk" },
+    "highlights": {
+      "vi": ["Arabica + Robusta", "Dành cho phin", "Rang đậm"],
+      "en": ["Arabica + Robusta blend", "Built for phin", "Dark roast"]
+    },
+    "notes": {
+      "vi": ["Caramel", "Cacao", "Mật ong"],
+      "en": ["Caramel", "Cacao", "Honey"]
+    },
+    "featured": true
   },
   {
     "slug": "cu-mgar-fine-robusta",
@@ -67,6 +95,15 @@
     "description": {
       "vi": "Hạt Robusta tuyển chọn từ vùng đất đỏ Cư M'gar, hương đất nồng ấm quyện cùng vị sô-cô-la sữa và hậu vị mạch nha ngọt dịu.",
       "en": "Selectively harvested Robusta from the red soil of Cư M'gar, with warm earthy notes, milk chocolate, and a gentle malty sweetness."
+    },
+    "origin": { "vi": "Cư M'gar · Đắk Lắk", "en": "Cư M'gar · Đắk Lắk" },
+    "highlights": {
+      "vi": ["Đất đỏ bazan", "Sơ chế tự nhiên", "Rang vừa"],
+      "en": ["Red basalt soil", "Natural process", "Medium roast"]
+    },
+    "notes": {
+      "vi": ["Sô-cô-la", "Hạt dẻ", "Đất ấm"],
+      "en": ["Chocolate", "Chestnut", "Earthy"]
     }
   },
   {
@@ -86,6 +123,15 @@
     "description": {
       "vi": "Arabica Đà Lạt sơ chế mật ong thủ công, giữ trọn vị ngọt caramel, hương mơ chín và hậu vị kéo dài êm ái.",
       "en": "Hand-crafted honey-processed Đà Lạt Arabica, preserving rich caramel sweetness, ripe apricot notes, and a long, smooth finish."
+    },
+    "origin": { "vi": "Đà Lạt · Lâm Đồng", "en": "Đà Lạt · Lâm Đồng" },
+    "highlights": {
+      "vi": ["Sơ chế mật ong thủ công", "Phơi giàn"],
+      "en": ["Hand-crafted honey process", "Raised-bed drying"]
+    },
+    "notes": {
+      "vi": ["Mơ chín", "Caramel", "Hậu vị dài"],
+      "en": ["Ripe apricot", "Caramel", "Long finish"]
     }
   }
 ]
