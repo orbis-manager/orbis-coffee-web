@@ -1,9 +1,17 @@
 import Link from "next/link";
 import Logo from "@/components/Logo";
 import Container from "@/components/ui/Container";
+import SocialIcon, { type SocialName } from "@/components/ui/SocialIcon";
 import Text from "@/components/ui/Text";
 import type { Dictionary } from "@/content/dictionary";
 import type { Locale } from "@/lib/i18n";
+
+const socialLinks: { name: SocialName; label: string; href: string }[] = [
+  { name: "facebook", label: "Facebook", href: "https://facebook.com/orbiscoffee" },
+  { name: "instagram", label: "Instagram", href: "https://instagram.com/orbiscoffee" },
+  { name: "tiktok", label: "TikTok", href: "https://tiktok.com/@orbiscoffee" },
+  { name: "zalo", label: "Zalo OA", href: "https://zalo.me/orbiscoffee" },
+];
 
 export default function Footer({
   locale,
@@ -37,6 +45,20 @@ export default function Footer({
             <Text as="p" scale="body-sm" className="text-on-surface-variant max-w-sm mt-space-xs">
               {dict.footer.description}
             </Text>
+            <div className="flex items-center gap-space-sm pt-space-xs">
+              {socialLinks.map(({ name, label, href }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-10 h-10 rounded-full border border-outline-variant text-secondary flex items-center justify-center hover:bg-inverse-surface hover:border-inverse-surface hover:text-primary-fixed transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
+                  <SocialIcon name={name} className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
           <div className="md:col-span-3 flex flex-col gap-space-md">

@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
+import HeroIntro from "@/components/HeroIntro";
 import Icon from "@/components/ui/Icon";
 import Text from "@/components/ui/Text";
 import type { Product } from "@/content/products";
@@ -15,7 +16,16 @@ const copy = {
   vi: {
     eyebrow: "Tuyển chọn • Thổ nhưỡng cà phê Việt Nam",
     title: "Bộ sưu tập cà phê ORBIS",
+    titleLine1: "Bộ Sưu Tập",
+    titleLine2Before: "",
+    titleMark: "Cà Phê Việt",
+    titleLine2After: ".",
     intro: "Từ đất đỏ bazan Buôn Ma Thuột đến cao nguyên sương mây Cầu Đất, mỗi dòng cà phê lưu giữ một sắc thái riêng của vùng đất Việt.",
+    facts: [
+      { value: "2", label: "Vùng trồng" },
+      { value: "1.650m", label: "Độ cao tối đa", count: 1650, suffix: "m" },
+      { value: "100%", label: "Hái chín thủ công" },
+    ],
     filters: ["Tất cả", "Robusta", "Arabica", "Phối trộn"] as const,
     count: "sản phẩm được tuyển chọn",
     sort: "Sắp xếp",
@@ -37,7 +47,16 @@ const copy = {
   en: {
     eyebrow: "Curated selection • Vietnamese coffee terroir",
     title: "The ORBIS coffee collection",
+    titleLine1: "The ORBIS",
+    titleLine2Before: "",
+    titleMark: "Coffee",
+    titleLine2After: " Collection.",
     intro: "From Buôn Ma Thuột’s red basalt soil to the misty Cầu Đất highlands, every coffee captures a distinct expression of Vietnam.",
+    facts: [
+      { value: "2", label: "Growing regions" },
+      { value: "1,650m", label: "Peak elevation", count: 1650, suffix: "m" },
+      { value: "100%", label: "Hand-picked" },
+    ],
     filters: ["All coffee", "Robusta", "Arabica", "Blends"] as const,
     count: "curated coffees",
     sort: "Sort",
@@ -57,6 +76,8 @@ const copy = {
     empty: "There are no products in this category yet.",
   },
 };
+
+const categories = ["all", "robusta", "arabica", "blends"] as const;
 
 function categoryFor(product: Product): Exclude<Category, "all"> {
   const category = product.category.en.toLowerCase();
@@ -84,25 +105,137 @@ export default function ProductCollection({
     return filtered;
   }, [category, products, sort]);
 
+  // Sliding "thumb" behind the active filter pill.
+  const thumbRef = useRef<HTMLSpanElement>(null);
+  const buttonRefs = useRef<Partial<Record<Category, HTMLButtonElement>>>({});
+
+  const moveThumb = useCallback((active: Category) => {
+    const btn = buttonRefs.current[active];
+    const thumb = thumbRef.current;
+    if (!btn || !thumb) return;
+    thumb.style.width = `${btn.offsetWidth}px`;
+    thumb.style.transform = `translateX(${btn.offsetLeft}px)`;
+  }, []);
+
+  useEffect(() => {
+    moveThumb(category);
+    const handleResize = () => moveThumb(category);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [category, moveThumb]);
+
+  // Cards fade/stagger in whenever the visible set changes (first paint,
+  // category filter, or sort), mirroring sample/web/product-list-header.html.
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>(".plp-card"));
+    cards.forEach((card) => card.classList.add("plp-card-pre"));
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries
+          .filter((entry) => entry.isIntersecting)
+          .forEach((entry, i) => {
+            const card = entry.target as HTMLElement;
+            card.style.transitionDelay = `${i * 90}ms`;
+            card.classList.remove("plp-card-pre");
+            io.unobserve(card);
+            setTimeout(() => {
+              card.style.transitionDelay = "";
+            }, 800);
+          });
+      },
+      { rootMargin: "0px 0px -10% 0px" }
+    );
+    cards.forEach((card) => io.observe(card));
+    return () => io.disconnect();
+  }, [visibleProducts]);
+
   return (
     <div className="flex flex-col w-full">
-      <section className="w-full max-w-[1200px] mx-auto px-margin md:px-margin-tablet lg:px-gutter-desktop pt-space-xl pb-space-2xl">
+      <HeroIntro className="plp-intro contents" countLocale={locale === "vi" ? "vi-VN" : "en-US"}>
+        <section className="w-full max-w-[1200px] mx-auto px-margin md:px-margin-tablet lg:px-gutter-desktop pt-space-xl pb-space-2xl">
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto gap-space-md">
-          <div className="inline-flex items-center gap-space-xs">
+          <div
+            data-reveal
+            style={{ "--hero-d": "0s" } as React.CSSProperties}
+            className="inline-flex items-center gap-space-xs"
+          >
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
             <Text as="span" scale="label-sm" className="text-primary uppercase tracking-[0.2em]">{labels.eyebrow}</Text>
           </div>
-          <Text as="h1" scale="headline-lg" className="text-on-surface text-balance">{labels.title}</Text>
-          <Text as="p" scale="body-lg" className="text-on-surface-variant leading-relaxed">{labels.intro}</Text>
+          <Text as="h1" scale="headline-lg" className="text-on-surface text-balance" aria-label={labels.title}>
+            <span className="plp-line" aria-hidden="true">
+              <span style={{ "--hero-d": "0.1s" } as React.CSSProperties}>{labels.titleLine1}</span>
+            </span>
+            <span className="plp-line" aria-hidden="true">
+              <span style={{ "--hero-d": "0.22s" } as React.CSSProperties}>
+                {labels.titleLine2Before}
+                <em className="plp-mark not-italic text-primary italic">{labels.titleMark}</em>
+                {labels.titleLine2After}
+              </span>
+            </span>
+          </Text>
+          <Text
+            as="p"
+            scale="body-lg"
+            data-reveal
+            style={{ "--hero-d": "0.55s" } as React.CSSProperties}
+            className="text-on-surface-variant leading-relaxed"
+          >
+            {labels.intro}
+          </Text>
+          <div
+            data-reveal
+            style={{ "--hero-d": "0.7s" } as React.CSSProperties}
+            className="flex justify-center flex-wrap gap-0 mt-space-sm"
+          >
+            {labels.facts.map((fact, index) => (
+              <div
+                key={fact.label}
+                className={`px-space-lg text-center ${index > 0 ? "border-l border-outline-variant/40" : ""}`}
+              >
+                <Text
+                  as="span"
+                  scale="headline-sm"
+                  className="font-display text-primary leading-none"
+                  {...("count" in fact ? { "data-count": fact.count, "data-suffix": fact.suffix } : {})}
+                >
+                  {fact.value}
+                </Text>
+                <Text as="span" scale="label-sm" className="block mt-1 text-on-surface-variant uppercase tracking-wider">
+                  {fact.label}
+                </Text>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>
+        </section>
 
       <section aria-label={labels.title} className="w-full max-w-[1200px] mx-auto px-margin md:px-margin-tablet lg:px-gutter-desktop mb-space-3xl">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-md border-b border-outline-variant/30">
-          <div className="flex flex-wrap items-center gap-space-xs" role="group" aria-label={labels.sort}>
-            {(["all", "robusta", "arabica", "blends"] as const).map((item, index) => (
-              <button key={item} type="button" onClick={() => setCategory(item)} aria-pressed={category === item}
-                className={`px-space-lg py-space-xs rounded-full font-sans text-label-md tracking-wider uppercase transition-all duration-200 ${category === item ? "bg-inverse-surface text-inverse-on-surface shadow-sm" : "bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest"}`}>
+        <div
+          data-reveal
+          style={{ "--hero-d": "0.85s" } as React.CSSProperties}
+          className="sticky top-20 z-[5] flex flex-col md:flex-row md:items-center justify-between gap-space-md py-space-md border-y border-outline-variant/30 bg-surface/90 backdrop-blur-md"
+        >
+          <div className="plp-pills relative flex flex-wrap items-center gap-1 p-1 bg-surface-container-high rounded-full" role="group" aria-label={labels.sort}>
+            <span ref={thumbRef} aria-hidden="true" className="plp-thumb" />
+            {categories.map((item, index) => (
+              <button
+                key={item}
+                type="button"
+                ref={(el) => {
+                  if (el) buttonRefs.current[item] = el;
+                }}
+                onClick={() => setCategory(item)}
+                aria-pressed={category === item}
+                className={`relative z-[1] px-space-lg py-space-xs rounded-full font-sans text-label-md tracking-wider uppercase transition-colors duration-300 ${category === item ? "text-inverse-on-surface" : "text-on-surface-variant hover:text-on-surface"}`}
+              >
                 {labels.filters[index]}
               </button>
             ))}
@@ -120,22 +253,27 @@ export default function ProductCollection({
           </div>
         </div>
         {visibleProducts.length ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-xl items-stretch pt-space-xl">
-            {visibleProducts.map((product) => <ProductCard key={product.slug} product={product} locale={locale} viewDetailLabel={viewDetailLabel} />)}
+          <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-xl items-stretch pt-space-xl">
+            {visibleProducts.map((product) => (
+              <div key={product.slug} className="plp-card h-full">
+                <ProductCard product={product} locale={locale} viewDetailLabel={viewDetailLabel} />
+              </div>
+            ))}
           </div>
         ) : <Text as="p" scale="body-md" className="py-space-2xl text-center text-on-surface-variant">{labels.empty}</Text>}
       </section>
+      </HeroIntro>
 
       <section className="w-full bg-surface-container-low py-space-3xl mb-space-3xl">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl items-center">
-            <div className="lg:col-span-6 relative aspect-[4/3] rounded-xl overflow-hidden bg-surface-container shadow-lg">
+            <div data-anim className="lg:col-span-6 relative aspect-[4/3] rounded-xl overflow-hidden bg-surface-container shadow-lg">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={products[0]?.image} alt={products[0]?.name[locale] ?? "ORBIS coffee"} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent" />
               <Text as="span" scale="label-sm" className="absolute bottom-space-lg left-space-lg text-primary-fixed uppercase tracking-widest">{labels.storyEyebrow}</Text>
             </div>
-            <div className="lg:col-span-6 flex flex-col gap-space-lg">
+            <div data-anim style={{ "--d": "0.15s" } as React.CSSProperties} className="lg:col-span-6 flex flex-col gap-space-lg">
               <Text as="span" scale="label-sm" className="text-primary uppercase tracking-[0.2em]">{labels.storyEyebrow}</Text>
               <Text as="h2" scale="headline-lg" className="text-on-surface leading-tight">{labels.storyTitle}</Text>
               <Text as="p" scale="body-md" className="text-on-surface-variant leading-relaxed">{labels.story}</Text>
@@ -154,13 +292,13 @@ export default function ProductCollection({
       </section>
 
       <section className="w-full max-w-[1200px] mx-auto px-margin md:px-margin-tablet lg:px-gutter-desktop mb-space-3xl">
-        <div className="bg-surface-container-lowest p-space-2xl md:p-space-3xl rounded-2xl shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-2xl">
+        <div data-anim className="bg-surface-container-lowest p-space-2xl md:p-space-3xl rounded-2xl shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-2xl">
           <div className="flex flex-col gap-space-md max-w-2xl">
             <Text as="span" scale="label-sm" className="text-primary uppercase tracking-[0.2em]">{labels.contactTitle}</Text>
             <Text as="h2" scale="headline-md" className="text-on-surface">{labels.contactTitle}</Text>
             <Text as="p" scale="body-md" className="text-on-surface-variant">{labels.contactText}</Text>
           </div>
-          <Button href="mailto:atelier@orbiscoffee.vn" variant="primary" size="lg" className="shrink-0">{labels.contact}</Button>
+          <Button href={`/${locale}/lien-he`} variant="primary" size="lg" className="shrink-0">{labels.contact}</Button>
         </div>
       </section>
     </div>

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 import { getDict } from "@/content/dictionary";
 import { isLocale, locales, type Locale } from "@/lib/i18n";
 
@@ -38,6 +39,7 @@ export default async function LocaleLayout({
 
   return (
     <div lang={locale} className="flex min-h-full flex-col">
+      <ScrollReveal />
       <Header locale={locale} dict={dict} />
       <main className="w-full pt-20 bg-surface min-h-[calc(100vh-20rem)]">
         {children}

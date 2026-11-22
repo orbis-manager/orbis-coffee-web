@@ -10,6 +10,10 @@ export type Product = {
   category: Localized;
   name: Localized;
   description: Localized;
+  origin: Localized;
+  highlights: Localized<string[]>;
+  notes: Localized<string[]>;
+  featured?: boolean;
 };
 
 export const products = productsData as Product[];

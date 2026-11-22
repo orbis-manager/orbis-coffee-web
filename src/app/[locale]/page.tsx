@@ -4,6 +4,7 @@ import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import Icon, { type IconName } from "@/components/ui/Icon";
 import Text from "@/components/ui/Text";
+import HeroIntro from "@/components/HeroIntro";
 import ProductCarousel from "@/components/ProductCarousel";
 import { getDict } from "@/content/dictionary";
 import { products } from "@/content/products";
@@ -16,6 +17,13 @@ const processIcons: Record<string, IconName> = {
   local_fire_department: "flame",
   lock: "lock",
 };
+
+function parseStatCount(value: string): { count: number; suffix: string } | null {
+  const match = value.match(/^([\d,]+)(.*)$/);
+  if (!match) return null;
+  const count = Number(match[1].replace(/,/g, ""));
+  return Number.isNaN(count) ? null : { count, suffix: match[2] };
+}
 
 export default async function HomePage({
   params,
@@ -32,21 +40,54 @@ export default async function HomePage({
       {/* HERO */}
       <section className="relative w-full max-w-[1200px] mx-auto px-gutter-desktop pt-space-xl pb-space-3xl overflow-hidden">
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary-fixed-dim/20 blur-3xl pointer-events-none" />
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-center">
+        <HeroIntro className="hero-intro grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-center">
           <div className="lg:col-span-7 flex flex-col items-start z-10">
-            <div className="inline-flex items-center gap-space-xs px-space-sm py-1 bg-surface-container rounded mb-space-md shadow-sm">
+            <div
+              data-reveal
+              style={{ "--hero-d": "0s" } as React.CSSProperties}
+              className="inline-flex items-center gap-space-xs px-space-sm py-1 bg-surface-container rounded mb-space-md shadow-sm"
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-primary" />
               <Text as="span" scale="label-sm" className="text-primary font-semibold">
                 {dict.hero.eyebrow}
               </Text>
             </div>
-            <Text as="h1" scale="display-lg" className="text-on-surface leading-[1.08] mb-space-md tracking-tight">
-              {dict.hero.title}
+            <Text
+              as="h1"
+              scale="display-lg"
+              className="text-on-surface leading-[1.08] mb-space-md tracking-tight"
+              aria-label={dict.hero.title}
+            >
+              <span className="hero-line" aria-hidden="true">
+                <span style={{ "--hero-d": "0.15s" } as React.CSSProperties}>
+                  {dict.hero.titleLead1}
+                  <span className="hero-brush">
+                    {dict.hero.titleBrush}
+                    <svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true">
+                      <path pathLength={1} d="M2 15 C 46 7, 88 17, 136 10 C 178 5, 224 16, 296 8" />
+                    </svg>
+                  </span>
+                  {dict.hero.titleLine1Suffix}
+                </span>
+              </span>
+              <span className="hero-line" aria-hidden="true">
+                <span style={{ "--hero-d": "0.3s" } as React.CSSProperties}>{dict.hero.titleLine2}</span>
+              </span>
             </Text>
-            <Text as="p" scale="body-lg" className="text-on-surface-variant max-w-xl mb-space-xl">
+            <Text
+              as="p"
+              scale="body-lg"
+              data-reveal
+              style={{ "--hero-d": "0.65s" } as React.CSSProperties}
+              className="text-on-surface-variant max-w-xl mb-space-xl"
+            >
               {dict.hero.description}
             </Text>
-            <div className="flex flex-wrap items-center gap-space-md mb-space-2xl">
+            <div
+              data-reveal
+              style={{ "--hero-d": "0.8s" } as React.CSSProperties}
+              className="flex flex-wrap items-center gap-space-md mb-space-2xl"
+            >
               <Button href={`/${locale}/san-pham`} variant="primary" size="lg">
                 {dict.hero.ctaPrimary}
               </Button>
@@ -55,35 +96,55 @@ export default async function HomePage({
                 <Icon name="arrowForward" className="w-4 h-4" />
               </Button>
             </div>
-            <div className="w-full pt-space-md bg-surface-container-low/70 rounded-lg p-space-md shadow-sm">
+            <div
+              data-reveal
+              style={{ "--hero-d": "0.95s" } as React.CSSProperties}
+              className="w-full pt-space-md bg-surface-container-low/70 rounded-lg p-space-md shadow-sm"
+            >
               <div className="grid grid-cols-3 gap-space-sm divide-x divide-outline-variant/40">
-                {dict.hero.stats.map((stat) => (
-                  <div key={stat.label} className="flex flex-col px-space-xs first:pl-0 pl-space-md">
-                    <Text as="span" scale="headline-sm" className="text-primary leading-none mb-1">
-                      {stat.value}
-                    </Text>
-                    <Text as="span" scale="label-sm" className="text-on-surface-variant">
-                      {stat.label}
-                    </Text>
-                  </div>
-                ))}
+                {dict.hero.stats.map((stat) => {
+                  const parsed = parseStatCount(stat.value);
+                  return (
+                    <div key={stat.label} className="flex flex-col px-space-xs first:pl-0 pl-space-md">
+                      <span
+                        className="font-display text-headline-sm text-primary leading-none mb-1"
+                        {...(parsed ? { "data-count": parsed.count, "data-suffix": parsed.suffix } : {})}
+                      >
+                        {stat.value}
+                      </span>
+                      <Text as="span" scale="label-sm" className="text-on-surface-variant">
+                        {stat.label}
+                      </Text>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-5 relative flex justify-center mt-space-lg lg:mt-0">
+          <div
+            data-reveal
+            style={{ "--hero-d": "0.2s" } as React.CSSProperties}
+            className="lg:col-span-5 relative flex justify-center mt-space-lg lg:mt-0"
+          >
             <div className="relative w-full max-w-[440px]">
               <div className="group relative aspect-[4/5] rounded-xl overflow-hidden shadow-[0_20px_48px_-12px_rgba(89,64,29,0.15)] bg-surface-container">
-                <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv_lLrg-j2YPNdxLxMFXFShUEMVoZrkv-bLN-fLhO0w63eyjGir0MFhCkNy9O-holau3WLMpC5i6ZPO0LkZtCaBJhs5uZaE2g4YAPpKv1ePlR5IoyidV601v_KgVw3iGAgAY9bibtQYyyUHj2zhwhizpU503AP4q3__VoMa20nLX0Eto_bGRVikN8_EJ2Ts3p2kGz7c9Tcizi0F4iq2sxfAvuwJ-6hXWRCV9-y0rws"
-                  alt="ORBIS COFFEE heritage pack"
-                  fill
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  priority
-                />
+                <div className="hero-settle absolute inset-0">
+                  <Image
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv_lLrg-j2YPNdxLxMFXFShUEMVoZrkv-bLN-fLhO0w63eyjGir0MFhCkNy9O-holau3WLMpC5i6ZPO0LkZtCaBJhs5uZaE2g4YAPpKv1ePlR5IoyidV601v_KgVw3iGAgAY9bibtQYyyUHj2zhwhizpU503AP4q3__VoMa20nLX0Eto_bGRVikN8_EJ2Ts3p2kGz7c9Tcizi0F4iq2sxfAvuwJ-6hXWRCV9-y0rws"
+                    alt="ORBIS COFFEE heritage pack"
+                    fill
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    priority
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-inverse-surface/40 via-transparent to-transparent pointer-events-none" />
               </div>
-              <div className="absolute -bottom-space-md -left-space-xs lg:-left-space-md bg-surface p-space-md rounded-lg shadow-[0_8px_24px_-4px_rgba(89,64,29,0.12)] w-[calc(100%-2rem)] max-w-[300px]">
+              <div
+                data-reveal
+                style={{ "--hero-d": "1.1s" } as React.CSSProperties}
+                className="absolute -bottom-space-md -left-space-xs lg:-left-space-md bg-surface p-space-md rounded-lg shadow-[0_8px_24px_-4px_rgba(89,64,29,0.12)] w-[calc(100%-2rem)] max-w-[300px]"
+              >
                 <div className="flex items-center justify-between gap-space-sm mb-1">
                   <Text as="span" scale="label-sm" className="text-primary uppercase tracking-[0.16em]">
                     {dict.hero.badgeLabel}
@@ -96,14 +157,14 @@ export default async function HomePage({
               </div>
             </div>
           </div>
-        </div>
+        </HeroIntro>
       </section>
 
       {/* OUR STORY */}
       <section className="w-full bg-surface-container-low py-space-3xl shadow-[0_4px_24px_-4px_rgba(89,64,29,0.03)]" id="our-story">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-center">
-            <div className="lg:col-span-5 relative">
+            <div data-anim className="lg:col-span-5 relative">
               <div className="group relative rounded-xl overflow-hidden shadow-[0_12px_36px_-6px_rgba(89,64,29,0.12)] bg-surface-container aspect-[4/5] w-full">
                 <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuArXXNP7tZrcho8CheJj1THNk3VLxtBSkj4QNnhuxofWNshCtuOtaIcOQsrt5JzlHtMVAYM1tXXZZA0POtm5X94TcbUFqZpRoNVAjeRQqxgCoDPapZEjWg15ZLmAWZQd7fxQcuR4Wisx8zo8GZwEWFUsNFThpaIny7snFb8zMbr5oNiIGn82v4JKwNf2JSA7gxCmqYfgvAvpnsQ8Z6DHyknUpaWw9hfmJG1GguH_V1T"
@@ -122,7 +183,7 @@ export default async function HomePage({
               </div>
             </div>
 
-            <div className="lg:col-span-7 flex flex-col items-start lg:pl-space-xl mt-space-xl lg:mt-0">
+            <div data-anim style={{ "--d": "0.15s" } as React.CSSProperties} className="lg:col-span-7 flex flex-col items-start lg:pl-space-xl mt-space-xl lg:mt-0">
               <div className="inline-flex items-center gap-space-xs mb-space-xs">
                 <Icon name="leaf" className="w-4 h-4 text-primary" />
                 <Text as="span" scale="label-sm" className="text-primary font-bold">
@@ -156,7 +217,7 @@ export default async function HomePage({
 
       {/* FEATURED PRODUCTS */}
       <section className="w-full max-w-[1200px] mx-auto px-gutter-desktop py-space-3xl" id="products">
-        <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-space-2xl">
+        <div data-anim className="flex flex-col items-center text-center max-w-2xl mx-auto mb-space-2xl">
           <Text as="span" scale="label-sm" className="text-primary font-bold mb-space-xs">
             {dict.products.eyebrow}
           </Text>
@@ -168,13 +229,15 @@ export default async function HomePage({
           </Text>
         </div>
 
-        <ProductCarousel
-          products={products}
-          locale={locale}
-          viewDetailLabel={dict.products.viewDetail}
-        />
+        <div data-anim style={{ "--d": "0.1s" } as React.CSSProperties}>
+          <ProductCarousel
+            products={products}
+            locale={locale}
+            viewDetailLabel={dict.products.viewDetail}
+          />
+        </div>
 
-        <div className="flex justify-center mt-space-2xl">
+        <div data-anim style={{ "--d": "0.2s" } as React.CSSProperties} className="flex justify-center mt-space-2xl">
           <Button href={`/${locale}/san-pham`} variant="ghost" size="lg">
             <span>{dict.products.viewAll}</span>
             <Icon name="east" className="w-4 h-4" />
@@ -185,7 +248,7 @@ export default async function HomePage({
       {/* OUR PROCESS */}
       <section className="w-full bg-surface-container py-space-3xl">
         <Container>
-          <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-space-2xl">
+          <div data-anim className="flex flex-col items-center text-center max-w-2xl mx-auto mb-space-2xl">
             <Text as="span" scale="label-sm" className="text-primary font-bold mb-space-xs">
               {dict.process.eyebrow}
             </Text>
@@ -201,6 +264,8 @@ export default async function HomePage({
             {dict.process.steps.map((step, i) => (
               <div
                 key={step.title}
+                data-anim
+                style={{ "--d": `${i * 0.12}s` } as React.CSSProperties}
                 className="flex flex-col justify-between h-full bg-surface rounded-xl p-space-lg shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex flex-col">
@@ -235,7 +300,7 @@ export default async function HomePage({
 
       {/* FINAL CTA */}
       <section className="w-full py-space-3xl px-gutter-desktop">
-        <div className="max-w-[1200px] mx-auto rounded-xl bg-gradient-to-r from-secondary-container/60 via-surface-container to-secondary-container/40 p-space-2xl md:p-space-3xl shadow-[0_8px_32px_-8px_rgba(89,64,29,0.08)] relative overflow-hidden">
+        <div data-anim className="max-w-[1200px] mx-auto rounded-xl bg-gradient-to-r from-secondary-container/60 via-surface-container to-secondary-container/40 p-space-2xl md:p-space-3xl shadow-[0_8px_32px_-8px_rgba(89,64,29,0.08)] relative overflow-hidden">
           <div className="max-w-2xl relative z-10">
             <Text as="span" scale="label-sm" className="text-primary font-bold mb-space-xs block">
               {dict.cta.eyebrow}

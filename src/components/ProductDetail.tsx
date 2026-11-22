@@ -150,15 +150,15 @@ export default function ProductDetail({
 
       <section className="w-full py-space-3xl bg-surface-container-low">
         <Container>
-          <div className="max-w-3xl mx-auto text-center mb-space-2xl">
+          <div data-anim className="max-w-3xl mx-auto text-center mb-space-2xl">
             <Text as="span" scale="label-sm" className="text-primary uppercase tracking-[0.2em]">{labels.storyEyebrow}</Text>
             <Text as="h2" scale="headline-lg" className="text-on-surface mt-space-xs">{labels.storyTitle}</Text>
             <div className="w-12 h-0.5 bg-primary/40 mx-auto my-space-md" />
             <Text as="p" scale="body-md" className="text-on-surface-variant leading-relaxed">{labels.story}</Text>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-space-md">
-            {[[labels.origin, product.badge[locale]], [labels.type, product.category[locale]], [labels.profile, product.description[locale]]].map(([title, value]) => (
-              <article key={title} className="bg-surface-container-lowest p-space-lg rounded-lg shadow-sm">
+            {[[labels.origin, product.badge[locale]], [labels.type, product.category[locale]], [labels.profile, product.description[locale]]].map(([title, value], index) => (
+              <article key={title} data-anim style={{ "--d": `${index * 0.1}s` } as React.CSSProperties} className="bg-surface-container-lowest p-space-lg rounded-lg shadow-sm">
                 <Text as="span" scale="label-sm" className="text-primary uppercase tracking-widest">{title}</Text>
                 <Text as="p" scale="title-md" className="text-on-surface mt-space-xs">{value}</Text>
               </article>
@@ -169,7 +169,7 @@ export default function ProductDetail({
 
       {relatedProducts.length > 0 && (
         <section className="w-full max-w-[1200px] mx-auto px-gutter-desktop py-space-3xl">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-space-md mb-space-xl">
+          <div data-anim className="flex flex-col sm:flex-row sm:items-end justify-between gap-space-md mb-space-xl">
             <div>
               <Text as="span" scale="label-sm" className="text-primary uppercase tracking-[0.2em]">{labels.relatedEyebrow}</Text>
               <Text as="h2" scale="headline-lg" className="text-on-surface mt-space-xs">{labels.relatedTitle}</Text>
@@ -177,8 +177,8 @@ export default function ProductDetail({
             <Link href={`/${locale}/san-pham`} className="inline-flex items-center gap-space-xs font-sans text-label-lg tracking-wider uppercase text-primary hover:text-on-surface">{labels.products}<Icon name="east" className="w-4 h-4" /></Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
-            {relatedProducts.map((related) => (
-              <article key={related.slug} className="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+            {relatedProducts.map((related, index) => (
+              <article key={related.slug} data-anim style={{ "--d": `${index * 0.1}s` } as React.CSSProperties} className="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
                 <Link href={`/${locale}/san-pham/${related.slug}`} className="group block">
                   <div className="relative aspect-[4/3] bg-surface-container">
                     <Image src={related.image} alt={related.name[locale]} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />

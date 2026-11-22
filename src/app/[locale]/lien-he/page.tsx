@@ -1,46 +1,51 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Button from "@/components/ui/Button";
-import Container from "@/components/ui/Container";
 import Icon, { type IconName } from "@/components/ui/Icon";
+import SocialIcon, { type SocialName } from "@/components/ui/SocialIcon";
 import Text from "@/components/ui/Text";
 import ContactForm from "@/components/ContactForm";
+import HeroTypingTitle from "@/components/HeroTypingTitle";
 import { getDict } from "@/content/dictionary";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { notFound } from "next/navigation";
 
 const copy = {
   vi: {
-    title: "Hãy cùng bắt đầu một cuộc trò chuyện.",
+    heroEyebrow: "Liên Hệ Với Chúng Tôi",
+    titleLead: "Hãy cùng bắt đầu ", titleAccent: "cuộc trò chuyện.",
     intro: "Bạn muốn tìm hiểu về cà phê theo vùng trồng, đặt hàng riêng hay trao đổi cơ hội hợp tác? ORBIS luôn sẵn lòng lắng nghe.",
-    atelier: "ORBIS Atelier", contactTitle: "Thông tin liên hệ", origin: "Đà Lạt & Buôn Ma Thuột",
+    atelier: "ORBIS Atelier", contactTitle: "Thông tin liên hệ",
     brandLabel: "Thương hiệu", brand: "ORBIS COFFEE — Vietnamese Terroir",
     emailLabel: "Email", phoneLabel: "Điện thoại", addressLabel: "Atelier & Flagship",
     hoursLabel: "Giờ đón khách", hours: "Thứ Hai – Chủ Nhật: 08:00 – 20:00",
-    cuppingTitle: "Thử nếm & tư vấn riêng", cupping: "Các buổi thử nếm theo mùa, tư vấn rang xay và quà tặng doanh nghiệp được sắp xếp theo lịch hẹn.",
     mapEyebrow: "Ghé thăm Atelier", mapTitle: "Tìm ORBIS tại Sài Gòn",
     mapDescription: "Atelier tọa lạc trên đường Đồng Khởi, trung tâm Quận 1, Thành phố Hồ Chí Minh.",
     directions: "Chỉ đường", openMap: "Mở bản đồ",
-    wholesaleEyebrow: "Đối tác & bán sỉ", wholesaleTitle: "Đưa cà phê ORBIS đến không gian của bạn",
-    wholesaleDescription: "Trao đổi cùng chúng tôi về lựa chọn cà phê, tư vấn pha chế hoặc hợp tác dành cho nhà hàng, khách sạn và doanh nghiệp.",
-    wholesaleCta: "Trao đổi hợp tác",
+    socialEyebrow: "Cộng Đồng Orbis", socialTitle: "Theo dõi chúng tôi",
+    socialDescription: "Câu chuyện mùa vụ, hậu trường rang mộc và lịch thử nếm mới nhất.",
   },
   en: {
-    title: "Let’s start a conversation.",
+    heroEyebrow: "Get In Touch",
+    titleLead: "Let’s start ", titleAccent: "a conversation.",
     intro: "Curious about our coffee origins, looking to arrange an order, or exploring a partnership? The ORBIS team would be glad to hear from you.",
-    atelier: "ORBIS Atelier", contactTitle: "Contact information", origin: "Đà Lạt & Buôn Ma Thuột",
+    atelier: "ORBIS Atelier", contactTitle: "Contact information",
     brandLabel: "Brand", brand: "ORBIS COFFEE — Vietnamese Terroir",
     emailLabel: "Email", phoneLabel: "Telephone", addressLabel: "Atelier & Flagship",
     hoursLabel: "Reception hours", hours: "Monday – Sunday: 08:00 – 20:00 ICT",
-    cuppingTitle: "Private cupping & concierge", cupping: "Seasonal tastings, roast consultations, and corporate gifting can be arranged by appointment.",
     mapEyebrow: "Visit the atelier", mapTitle: "Find ORBIS in Saigon",
     mapDescription: "Our atelier is located on Đồng Khởi Street in the heart of District 1, Ho Chi Minh City.",
     directions: "Get directions", openMap: "Open map",
-    wholesaleEyebrow: "Hospitality & wholesale", wholesaleTitle: "Bring ORBIS coffee to your space",
-    wholesaleDescription: "Talk with us about coffee selection, brewing consultation, or partnerships for restaurants, hotels, and businesses.",
-    wholesaleCta: "Discuss a partnership",
+    socialEyebrow: "Orbis Community", socialTitle: "Follow us",
+    socialDescription: "Harvest stories, roastery behind-the-scenes, and the latest cupping schedule.",
   },
 } satisfies Record<Locale, Record<string, string>>;
+
+const socialLinks: { name: SocialName; label: string; handle: Record<Locale, string>; href: string }[] = [
+  { name: "facebook", label: "Facebook", handle: { vi: "Orbis Coffee", en: "Orbis Coffee" }, href: "https://facebook.com/orbiscoffee" },
+  { name: "instagram", label: "Instagram", handle: { vi: "@orbiscoffee", en: "@orbiscoffee" }, href: "https://instagram.com/orbiscoffee" },
+  { name: "tiktok", label: "TikTok", handle: { vi: "@orbiscoffee", en: "@orbiscoffee" }, href: "https://tiktok.com/@orbiscoffee" },
+  { name: "zalo", label: "Zalo OA", handle: { vi: "Nhắn tin tư vấn", en: "Chat with us" }, href: "https://zalo.me/orbiscoffee" },
+];
 
 const contactDetails: { icon: IconName; key: "brand" | "email" | "phone" | "address" | "hours" }[] = [
   { icon: "storefront", key: "brand" },
@@ -99,38 +104,29 @@ export default async function ContactPage({
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto gap-space-md">
           <div className="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded bg-secondary-container/40">
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            <Text as="span" scale="label-sm" className="text-primary uppercase tracking-[0.2em]">{labels.atelier}</Text>
+            <Text as="span" scale="label-sm" className="text-primary uppercase tracking-[0.2em]">{labels.heroEyebrow}</Text>
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
           </div>
-          <Text as="h1" scale="display-lg" className="text-on-surface tracking-tight text-balance">{labels.title}</Text>
+          <HeroTypingTitle
+            lead={labels.titleLead}
+            typed={labels.titleAccent}
+            className="font-display text-display-lg text-on-surface tracking-tight text-balance"
+          />
           <Text as="p" scale="body-lg" className="text-on-surface-variant max-w-2xl leading-relaxed">{labels.intro}</Text>
         </div>
       </section>
 
       <section className="w-full max-w-[1200px] mx-auto px-margin md:px-margin-tablet lg:px-gutter-desktop pb-space-3xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-start">
-          <ContactForm locale={locale} />
+          <div data-anim className="lg:col-span-7">
+            <ContactForm locale={locale} />
+          </div>
 
-          <aside className="lg:col-span-5 flex flex-col gap-space-md">
-            <div className="bg-surface-container-low rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+          <aside className="lg:col-span-5 flex flex-col gap-space-md lg:sticky lg:top-28">
+            <div data-anim style={{ "--d": "0.1s" } as React.CSSProperties} className="bg-surface-container-low rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
               <div>
                 <Text as="span" scale="label-sm" className="text-secondary uppercase tracking-[0.16em]">{labels.atelier}</Text>
                 <Text as="h2" scale="headline-sm" className="text-on-surface mt-space-xs">{labels.contactTitle}</Text>
-              </div>
-
-              <div className="relative w-full h-44 rounded-lg overflow-hidden group">
-                <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsMIYhqseBIneXD_9lWk4vrPT6F3ZP4Rn8klOwIX117oU9jc_7lZ4et1SyHJ385YeBfOu9H4dlWANAnONI4VoyWg8oETHXIYk3Hup5NNFLaWagBjLnsGW-iJU7cIa4QrrJwqrvb1PWACdSYERcUyKFahJIm5pG2N7SCcmW-Apj36bowQnocczrnbfiks-g-PI6BZgJbJq5pEO6jnGlmemIKgvRcV7bvsIfDtMUBa7M"
-                  alt={labels.origin}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent" />
-                <div className="absolute bottom-space-md left-space-md right-space-md flex items-center justify-between gap-space-sm text-inverse-on-surface">
-                  <Text as="span" scale="label-sm" className="uppercase tracking-[0.14em]">{labels.origin}</Text>
-                  <Icon name="coffee" className="w-5 h-5 shrink-0" />
-                </div>
               </div>
 
               <dl className="flex flex-col gap-space-md">
@@ -153,13 +149,33 @@ export default async function ContactPage({
                   );
                 })}
               </dl>
+            </div>
 
-              <div className="p-space-md rounded-lg bg-surface-variant/70">
-                <div className="flex items-center gap-space-xs text-primary">
-                  <Icon name="coffee" className="w-[18px] h-[18px]" />
-                  <Text as="span" scale="label-sm" className="uppercase tracking-wider">{labels.cuppingTitle}</Text>
-                </div>
-                <Text as="p" scale="body-sm" className="text-on-surface-variant leading-relaxed mt-space-xs">{labels.cupping}</Text>
+            <div data-anim style={{ "--d": "0.2s" } as React.CSSProperties} className="bg-surface-container-low rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+              <div>
+                <Text as="span" scale="label-sm" className="text-secondary uppercase tracking-[0.16em]">{labels.socialEyebrow}</Text>
+                <Text as="h3" scale="headline-sm" className="text-on-surface mt-space-xs">{labels.socialTitle}</Text>
+                <Text as="p" scale="body-sm" className="text-on-surface-variant mt-space-xs">{labels.socialDescription}</Text>
+              </div>
+              <div className="grid grid-cols-2 gap-space-sm">
+                {socialLinks.map(({ name, label, handle, href }) => (
+                  <a
+                    key={name}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${label} ${locale === "vi" ? "(mở trong tab mới)" : "(opens in a new tab)"}`}
+                    className="group flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest/70 hover:bg-surface-container-lowest hover:shadow-[0_6px_18px_rgba(89,64,29,0.10)] hover:-translate-y-0.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  >
+                    <span className="w-11 h-11 rounded-full bg-secondary-container/50 text-primary flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-inverse-surface group-hover:text-primary-fixed">
+                      <SocialIcon name={name} className="w-5 h-5" />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-sans text-[0.95rem] leading-5 font-semibold text-on-surface truncate">{label}</span>
+                      <span className="block font-sans text-[0.8rem] leading-5 text-on-surface-variant truncate">{handle[locale]}</span>
+                    </span>
+                  </a>
+                ))}
               </div>
             </div>
           </aside>
@@ -167,7 +183,7 @@ export default async function ContactPage({
       </section>
 
       <section className="w-full max-w-[1200px] mx-auto px-margin md:px-margin-tablet lg:px-gutter-desktop pb-space-3xl">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-lg">
+        <div data-anim className="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-lg">
           <div className="flex flex-col gap-space-xs">
             <div className="inline-flex items-center gap-space-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -181,7 +197,7 @@ export default async function ContactPage({
           </Button>
         </div>
 
-        <div className="relative h-[360px] md:h-[420px] rounded-xl overflow-hidden shadow-md bg-surface-container">
+        <div data-anim style={{ "--d": "0.1s" } as React.CSSProperties} className="relative h-[360px] md:h-[420px] rounded-xl overflow-hidden shadow-md bg-surface-container">
           <iframe
             title={labels.mapTitle}
             src={`https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`}
@@ -203,19 +219,6 @@ export default async function ContactPage({
             </a>
           </div>
         </div>
-      </section>
-
-      <section className="w-full bg-surface-container-low py-space-xl">
-        <Container className="flex flex-col md:flex-row items-center justify-between gap-space-lg">
-          <div className="flex flex-col gap-space-xs text-center md:text-left">
-            <Text as="span" scale="label-sm" className="text-secondary uppercase tracking-[0.16em]">{labels.wholesaleEyebrow}</Text>
-            <Text as="h2" scale="headline-sm" className="text-on-surface">{labels.wholesaleTitle}</Text>
-            <Text as="p" scale="body-sm" className="text-on-surface-variant max-w-2xl">{labels.wholesaleDescription}</Text>
-          </div>
-          <Button href={`mailto:${dict.footer.email}?subject=${encodeURIComponent(locale === "vi" ? "Trao đổi hợp tác ORBIS COFFEE" : "ORBIS COFFEE partnership inquiry")}`} variant="primary" size="lg" className="shrink-0">
-            {labels.wholesaleCta}<Icon name="arrowUpRight" className="w-4 h-4" />
-          </Button>
-        </Container>
       </section>
     </div>
   );
