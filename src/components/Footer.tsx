@@ -24,7 +24,7 @@ export default function Footer({
         <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter-desktop items-start">
           <div className="md:col-span-5 flex flex-col gap-space-sm">
             <div className="flex items-center gap-space-sm">
-              <Logo className="h-8 w-8 shrink-0 text-on-surface" />
+              <Logo className="h-8 w-8 shrink-0" />
               <span className="flex flex-col items-start">
                 <span className="font-display text-headline-sm uppercase tracking-tight text-on-surface">
                   ORBIS COFFEE
