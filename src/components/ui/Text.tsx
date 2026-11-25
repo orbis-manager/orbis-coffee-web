@@ -3,11 +3,11 @@ import type { ComponentPropsWithoutRef, ElementType } from "react";
 
 // Static class map so Tailwind's scanner can see every literal class name.
 const scaleClasses = {
-  "display-xl": "font-display text-display-xl",
-  "display-lg": "font-display text-display-lg",
+  "display-xl": "font-display text-display-xl-mobile md:text-display-xl",
+  "display-lg": "font-display text-display-lg-mobile md:text-display-lg",
   "display-lg-mobile": "font-display text-display-lg-mobile",
   "display-xl-mobile": "font-display text-display-xl-mobile",
-  "headline-lg": "font-display text-headline-lg",
+  "headline-lg": "font-display text-headline-lg-mobile md:text-headline-lg",
   "headline-lg-mobile": "font-display text-headline-lg-mobile",
   "headline-md": "font-display text-headline-md",
   "headline-sm": "font-display text-headline-sm",

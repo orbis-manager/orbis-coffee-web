@@ -28,7 +28,7 @@ export default function HeaderNav({
   }
 
   return (
-    <nav aria-label={locale === "vi" ? "Điều hướng chính" : "Main navigation"} className="hidden md:flex items-center gap-space-xl">
+    <nav aria-label={locale === "vi" ? "Điều hướng chính" : "Main navigation"} className="hidden min-[901px]:flex items-center gap-space-xl">
       {items.map((item) => {
         const active = isActive(item.key);
 

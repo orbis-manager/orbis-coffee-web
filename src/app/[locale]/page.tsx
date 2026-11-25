@@ -38,7 +38,7 @@ export default async function HomePage({
   return (
     <div className="flex flex-col w-full">
       {/* HERO */}
-      <section className="relative w-full max-w-[1200px] mx-auto px-gutter-desktop pt-space-xl pb-space-3xl overflow-hidden">
+      <section className="relative w-full max-w-[1200px] mx-auto px-margin md:px-margin-tablet lg:px-gutter-desktop pt-space-xl pb-space-3xl overflow-hidden">
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary-fixed-dim/20 blur-3xl pointer-events-none" />
         <HeroIntro className="hero-intro grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-center">
           <div className="lg:col-span-7 flex flex-col items-start z-10">
@@ -216,7 +216,7 @@ export default async function HomePage({
       </section>
 
       {/* FEATURED PRODUCTS */}
-      <section className="w-full max-w-[1200px] mx-auto px-gutter-desktop py-space-3xl" id="products">
+      <section className="w-full max-w-[1200px] mx-auto px-margin md:px-margin-tablet lg:px-gutter-desktop py-space-3xl" id="products">
         <div data-anim className="flex flex-col items-center text-center max-w-2xl mx-auto mb-space-2xl">
           <Text as="span" scale="label-sm" className="text-primary font-bold mb-space-xs">
             {dict.products.eyebrow}
@@ -299,7 +299,7 @@ export default async function HomePage({
       </section>
 
       {/* FINAL CTA */}
-      <section className="w-full py-space-3xl px-gutter-desktop">
+      <section className="w-full py-space-3xl px-margin md:px-margin-tablet lg:px-gutter-desktop">
         <div data-anim className="max-w-[1200px] mx-auto rounded-xl bg-gradient-to-r from-secondary-container/60 via-surface-container to-secondary-container/40 p-space-2xl md:p-space-3xl shadow-[0_8px_32px_-8px_rgba(89,64,29,0.08)] relative overflow-hidden">
           <div className="max-w-2xl relative z-10">
             <Text as="span" scale="label-sm" className="text-primary font-bold mb-space-xs block">

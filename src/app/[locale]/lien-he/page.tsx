@@ -110,7 +110,7 @@ export default async function ContactPage({
           <HeroTypingTitle
             lead={labels.titleLead}
             typed={labels.titleAccent}
-            className="font-display text-display-lg text-on-surface tracking-tight text-balance"
+            className="font-display text-display-lg-mobile md:text-display-lg text-on-surface tracking-tight text-balance"
           />
           <Text as="p" scale="body-lg" className="text-on-surface-variant max-w-2xl leading-relaxed">{labels.intro}</Text>
         </div>
@@ -134,7 +134,7 @@ export default async function ContactPage({
                   const value = detailValues[key];
                   return (
                     <div key={key} className="flex items-start gap-space-md">
-                      <div className="w-9 h-9 rounded-full bg-secondary-container/50 flex items-center justify-center shrink-0 text-primary">
+                      <div className="w-9 h-9 rounded-[9999px] bg-secondary-container/50 flex items-center justify-center shrink-0 text-primary">
                         <Icon name={icon} className="w-5 h-5" />
                       </div>
                       <div className="min-w-0">
@@ -167,7 +167,7 @@ export default async function ContactPage({
                     aria-label={`${label} ${locale === "vi" ? "(mở trong tab mới)" : "(opens in a new tab)"}`}
                     className="group flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest/70 hover:bg-surface-container-lowest hover:shadow-[0_6px_18px_rgba(89,64,29,0.10)] hover:-translate-y-0.5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
-                    <span className="w-11 h-11 rounded-full bg-secondary-container/50 text-primary flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-inverse-surface group-hover:text-primary-fixed">
+                    <span className="w-11 h-11 rounded-[9999px] bg-secondary-container/50 text-primary flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-inverse-surface group-hover:text-primary-fixed">
                       <SocialIcon name={name} className="w-5 h-5" />
                     </span>
                     <span className="min-w-0 flex-1">

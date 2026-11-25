@@ -1,17 +1,11 @@
 import Link from "next/link";
 import Logo from "@/components/Logo";
 import Container from "@/components/ui/Container";
-import SocialIcon, { type SocialName } from "@/components/ui/SocialIcon";
+import SocialIcon from "@/components/ui/SocialIcon";
 import Text from "@/components/ui/Text";
 import type { Dictionary } from "@/content/dictionary";
+import { socialLinks } from "@/content/social-links";
 import type { Locale } from "@/lib/i18n";
-
-const socialLinks: { name: SocialName; label: string; href: string; hidden?: boolean }[] = [
-  { name: "facebook", label: "Facebook", href: "https://www.facebook.com/profile.php?id=61596190678510" },
-  { name: "instagram", label: "Instagram", href: "https://instagram.com/orbiscoffee", hidden: true },
-  { name: "tiktok", label: "TikTok", href: "https://tiktok.com/@orbiscoffee", hidden: true },
-  { name: "zalo", label: "Zalo OA", href: "https://zalo.me/orbiscoffee", hidden: true },
-];
 
 export default function Footer({
   locale,
@@ -53,7 +47,7 @@ export default function Footer({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full border border-outline-variant text-secondary flex items-center justify-center hover:bg-inverse-surface hover:border-inverse-surface hover:text-primary-fixed transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="w-10 h-10 rounded-[9999px] border border-outline-variant text-secondary flex items-center justify-center hover:bg-inverse-surface hover:border-inverse-surface hover:text-primary-fixed transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   <SocialIcon name={name} className="w-4 h-4" />
                 </a>
