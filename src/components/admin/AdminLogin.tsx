@@ -36,7 +36,7 @@ export default function AdminLogin({
           <Link href="/vi" className="inline-flex items-center gap-space-sm rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
             <Logo className="w-10 h-10 text-primary" />
             <span className="flex flex-col">
-              <Text as="span" scale="headline-sm" className="text-on-surface uppercase tracking-wider">ORBIS COFFEE</Text>
+              <Text as="span" scale="headline-sm" className="text-on-surface uppercase tracking-wider">ANH COFFEE</Text>
               <Text as="span" scale="label-sm" className="text-primary uppercase tracking-[0.2em]">Vietnamese Terroir</Text>
             </span>
           </Link>

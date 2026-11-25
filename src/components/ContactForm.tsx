@@ -11,7 +11,7 @@ import type { Locale } from "@/lib/i18n";
 
 const copy = {
   vi: {
-    eyebrow: "Gửi lời nhắn", title: "Trao đổi cùng ORBIS", description: "Điền thông tin bên dưới. Chúng tôi sẽ mở ứng dụng email với nội dung đã soạn để bạn gửi đến đội ngũ ORBIS.",
+    eyebrow: "Gửi lời nhắn", title: "Trao đổi cùng ANH COFFEE", description: "Điền thông tin bên dưới. Chúng tôi sẽ mở ứng dụng email với nội dung đã soạn để bạn gửi đến đội ngũ ANH COFFEE.",
     name: "Họ và tên", namePlaceholder: "Nguyễn Minh An", email: "Email", emailPlaceholder: "ban@email.com", phone: "Số điện thoại", optional: "Không bắt buộc",
     subject: "Chủ đề", choose: "Chọn nội dung cần trao đổi", subjects: ["Tư vấn sản phẩm", "Đặt hàng", "Hợp tác bán sỉ / đối tác", "Quà tặng doanh nghiệp", "Khác"],
     message: "Lời nhắn", messagePlaceholder: "Chia sẻ với chúng tôi điều bạn đang quan tâm...", send: "Soạn email", privacy: "Thông tin chỉ được dùng để phản hồi yêu cầu này.",
@@ -19,7 +19,7 @@ const copy = {
     required: "Vui lòng điền đầy đủ các trường bắt buộc.",
   },
   en: {
-    eyebrow: "Write to us", title: "Start a conversation", description: "Fill in the details below. We’ll open your email app with a prepared message for the ORBIS team.",
+    eyebrow: "Write to us", title: "Start a conversation", description: "Fill in the details below. We’ll open your email app with a prepared message for the ANH COFFEE team.",
     name: "Full name", namePlaceholder: "Alex Morgan", email: "Email address", emailPlaceholder: "you@email.com", phone: "Phone number", optional: "Optional",
     subject: "Subject", choose: "Choose an inquiry topic", subjects: ["Product information", "Order inquiry", "Wholesale / partnership", "Corporate gifting", "Other"],
     message: "Message", messagePlaceholder: "Tell us what you have in mind...", send: "Prepare email", privacy: "Your details are used only to respond to this inquiry.",
@@ -75,7 +75,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
       "",
       message,
     ].filter(Boolean).join("\n");
-    const mailto = `mailto:atelier@orbiscoffee.vn?subject=${encodeURIComponent(`[ORBIS] ${subject}`)}&body=${encodeURIComponent(body)}`;
+    const mailto = `mailto:coffeebyorbis@gmail.com?subject=${encodeURIComponent(`[ANH COFFEE] ${subject}`)}&body=${encodeURIComponent(body)}`;
 
     setStatus(labels.emailReady);
     window.location.href = mailto;

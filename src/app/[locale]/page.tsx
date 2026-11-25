@@ -132,7 +132,7 @@ export default async function HomePage({
                 <div className="hero-settle absolute inset-0">
                   <Image
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv_lLrg-j2YPNdxLxMFXFShUEMVoZrkv-bLN-fLhO0w63eyjGir0MFhCkNy9O-holau3WLMpC5i6ZPO0LkZtCaBJhs5uZaE2g4YAPpKv1ePlR5IoyidV601v_KgVw3iGAgAY9bibtQYyyUHj2zhwhizpU503AP4q3__VoMa20nLX0Eto_bGRVikN8_EJ2Ts3p2kGz7c9Tcizi0F4iq2sxfAvuwJ-6hXWRCV9-y0rws"
-                    alt="ORBIS COFFEE heritage pack"
+                    alt="ANH COFFEE heritage pack"
                     fill
                     className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                     priority
@@ -167,7 +167,7 @@ export default async function HomePage({
             <div data-anim className="lg:col-span-5 relative">
               <div className="group relative rounded-xl overflow-hidden shadow-[0_12px_36px_-6px_rgba(89,64,29,0.12)] bg-surface-container aspect-[4/5] w-full">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuArXXNP7tZrcho8CheJj1THNk3VLxtBSkj4QNnhuxofWNshCtuOtaIcOQsrt5JzlHtMVAYM1tXXZZA0POtm5X94TcbUFqZpRoNVAjeRQqxgCoDPapZEjWg15ZLmAWZQd7fxQcuR4Wisx8zo8GZwEWFUsNFThpaIny7snFb8zMbr5oNiIGn82v4JKwNf2JSA7gxCmqYfgvAvpnsQ8Z6DHyknUpaWw9hfmJG1GguH_V1T"
+                  src="/images/terroir-farmer-1122x1402.jpg"
                   alt={dict.story.terroirText}
                   fill
                   className="object-cover object-center transition-transform duration-700 group-hover:scale-105"

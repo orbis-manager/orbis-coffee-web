@@ -6,11 +6,11 @@ import Text from "@/components/ui/Text";
 import type { Dictionary } from "@/content/dictionary";
 import type { Locale } from "@/lib/i18n";
 
-const socialLinks: { name: SocialName; label: string; href: string }[] = [
-  { name: "facebook", label: "Facebook", href: "https://facebook.com/orbiscoffee" },
-  { name: "instagram", label: "Instagram", href: "https://instagram.com/orbiscoffee" },
-  { name: "tiktok", label: "TikTok", href: "https://tiktok.com/@orbiscoffee" },
-  { name: "zalo", label: "Zalo OA", href: "https://zalo.me/orbiscoffee" },
+const socialLinks: { name: SocialName; label: string; href: string; hidden?: boolean }[] = [
+  { name: "facebook", label: "Facebook", href: "https://www.facebook.com/profile.php?id=61596190678510" },
+  { name: "instagram", label: "Instagram", href: "https://instagram.com/orbiscoffee", hidden: true },
+  { name: "tiktok", label: "TikTok", href: "https://tiktok.com/@orbiscoffee", hidden: true },
+  { name: "zalo", label: "Zalo OA", href: "https://zalo.me/orbiscoffee", hidden: true },
 ];
 
 export default function Footer({
@@ -35,7 +35,7 @@ export default function Footer({
               <Logo className="h-8 w-8 shrink-0" />
               <span className="flex flex-col items-start">
                 <span className="font-display text-headline-sm uppercase tracking-tight text-on-surface">
-                  ORBIS COFFEE
+                  ANH COFFEE
                 </span>
                 <span className="font-sans text-label-sm tracking-[0.2em] text-primary uppercase">
                   {dict.header.tagline}
@@ -46,7 +46,7 @@ export default function Footer({
               {dict.footer.description}
             </Text>
             <div className="flex items-center gap-space-sm pt-space-xs">
-              {socialLinks.map(({ name, label, href }) => (
+              {socialLinks.filter((link) => !link.hidden).map(({ name, label, href }) => (
                 <a
                   key={name}
                   href={href}

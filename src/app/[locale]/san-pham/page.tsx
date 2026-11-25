@@ -13,7 +13,7 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   return {
-    title: locale === "vi" ? "Bộ sưu tập cà phê | ORBIS COFFEE" : "Coffee Collection | ORBIS COFFEE",
+    title: locale === "vi" ? "Bộ sưu tập cà phê | ANH COFFEE" : "Coffee Collection | ANH COFFEE",
     description: locale === "vi"
       ? "Khám phá các dòng cà phê Robusta, Arabica và phối trộn được tuyển chọn từ những vùng trồng đặc trưng của Việt Nam."
       : "Explore curated Robusta, Arabica, and blended coffees from Vietnam’s distinctive growing regions.",

@@ -20,7 +20,7 @@ export async function generateMetadata({
   if (!product) return {};
 
   return {
-    title: `${product.name[locale]} | ORBIS COFFEE`,
+    title: `${product.name[locale]} | ANH COFFEE`,
     description: product.description[locale],
     openGraph: { title: product.name[locale], description: product.description[locale], images: [product.image] },
   };
