@@ -13,38 +13,38 @@ const copy = {
   vi: {
     heroEyebrow: "Liên Hệ Với Chúng Tôi",
     titleLead: "Hãy cùng bắt đầu ", titleAccent: "cuộc trò chuyện.",
-    intro: "Bạn muốn tìm hiểu về cà phê theo vùng trồng, đặt hàng riêng hay trao đổi cơ hội hợp tác? ORBIS luôn sẵn lòng lắng nghe.",
-    atelier: "ORBIS Atelier", contactTitle: "Thông tin liên hệ",
-    brandLabel: "Thương hiệu", brand: "ORBIS COFFEE — Vietnamese Terroir",
+    intro: "Bạn muốn tìm hiểu về cà phê theo vùng trồng, đặt hàng riêng hay trao đổi cơ hội hợp tác? ANH COFFEE luôn sẵn lòng lắng nghe.",
+    atelier: "ANH COFFEE Atelier", contactTitle: "Thông tin liên hệ",
+    brandLabel: "Thương hiệu", brand: "ANH COFFEE — Vietnamese Terroir",
     emailLabel: "Email", phoneLabel: "Điện thoại", addressLabel: "Atelier & Flagship",
     hoursLabel: "Giờ đón khách", hours: "Thứ Hai – Chủ Nhật: 08:00 – 20:00",
-    mapEyebrow: "Ghé thăm Atelier", mapTitle: "Tìm ORBIS tại Sài Gòn",
+    mapEyebrow: "Ghé thăm Atelier", mapTitle: "Tìm ANH COFFEE tại Sài Gòn",
     mapDescription: "Atelier tọa lạc trên đường Đồng Khởi, trung tâm Quận 1, Thành phố Hồ Chí Minh.",
     directions: "Chỉ đường", openMap: "Mở bản đồ",
-    socialEyebrow: "Cộng Đồng Orbis", socialTitle: "Theo dõi chúng tôi",
+    socialEyebrow: "Cộng Đồng ANH COFFEE", socialTitle: "Theo dõi chúng tôi",
     socialDescription: "Câu chuyện mùa vụ, hậu trường rang mộc và lịch thử nếm mới nhất.",
   },
   en: {
     heroEyebrow: "Get In Touch",
     titleLead: "Let’s start ", titleAccent: "a conversation.",
-    intro: "Curious about our coffee origins, looking to arrange an order, or exploring a partnership? The ORBIS team would be glad to hear from you.",
-    atelier: "ORBIS Atelier", contactTitle: "Contact information",
-    brandLabel: "Brand", brand: "ORBIS COFFEE — Vietnamese Terroir",
+    intro: "Curious about our coffee origins, looking to arrange an order, or exploring a partnership? The ANH COFFEE team would be glad to hear from you.",
+    atelier: "ANH COFFEE Atelier", contactTitle: "Contact information",
+    brandLabel: "Brand", brand: "ANH COFFEE — Vietnamese Terroir",
     emailLabel: "Email", phoneLabel: "Telephone", addressLabel: "Atelier & Flagship",
     hoursLabel: "Reception hours", hours: "Monday – Sunday: 08:00 – 20:00 ICT",
-    mapEyebrow: "Visit the atelier", mapTitle: "Find ORBIS in Saigon",
+    mapEyebrow: "Visit the atelier", mapTitle: "Find ANH COFFEE in Saigon",
     mapDescription: "Our atelier is located on Đồng Khởi Street in the heart of District 1, Ho Chi Minh City.",
     directions: "Get directions", openMap: "Open map",
-    socialEyebrow: "Orbis Community", socialTitle: "Follow us",
+    socialEyebrow: "ANH COFFEE Community", socialTitle: "Follow us",
     socialDescription: "Harvest stories, roastery behind-the-scenes, and the latest cupping schedule.",
   },
 } satisfies Record<Locale, Record<string, string>>;
 
-const socialLinks: { name: SocialName; label: string; handle: Record<Locale, string>; href: string }[] = [
-  { name: "facebook", label: "Facebook", handle: { vi: "Orbis Coffee", en: "Orbis Coffee" }, href: "https://facebook.com/orbiscoffee" },
-  { name: "instagram", label: "Instagram", handle: { vi: "@orbiscoffee", en: "@orbiscoffee" }, href: "https://instagram.com/orbiscoffee" },
-  { name: "tiktok", label: "TikTok", handle: { vi: "@orbiscoffee", en: "@orbiscoffee" }, href: "https://tiktok.com/@orbiscoffee" },
-  { name: "zalo", label: "Zalo OA", handle: { vi: "Nhắn tin tư vấn", en: "Chat with us" }, href: "https://zalo.me/orbiscoffee" },
+const socialLinks: { name: SocialName; label: string; handle: Record<Locale, string>; href: string; hidden?: boolean }[] = [
+  { name: "facebook", label: "Facebook", handle: { vi: "ANH COFFEE", en: "ANH COFFEE" }, href: "https://www.facebook.com/profile.php?id=61596190678510" },
+  { name: "instagram", label: "Instagram", handle: { vi: "@orbiscoffee", en: "@orbiscoffee" }, href: "https://instagram.com/orbiscoffee", hidden: true },
+  { name: "tiktok", label: "TikTok", handle: { vi: "@orbiscoffee", en: "@orbiscoffee" }, href: "https://tiktok.com/@orbiscoffee", hidden: true },
+  { name: "zalo", label: "Zalo OA", handle: { vi: "Nhắn tin tư vấn", en: "Chat with us" }, href: "https://zalo.me/orbiscoffee", hidden: true },
 ];
 
 const contactDetails: { icon: IconName; key: "brand" | "email" | "phone" | "address" | "hours" }[] = [
@@ -63,10 +63,10 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   return {
-    title: locale === "vi" ? "Liên hệ | ORBIS COFFEE" : "Contact | ORBIS COFFEE",
+    title: locale === "vi" ? "Liên hệ | ANH COFFEE" : "Contact | ANH COFFEE",
     description: locale === "vi"
-      ? "Liên hệ ORBIS COFFEE để được tư vấn sản phẩm, đặt hàng hoặc trao đổi cơ hội hợp tác."
-      : "Contact ORBIS COFFEE about product guidance, orders, or partnership opportunities.",
+      ? "Liên hệ ANH COFFEE để được tư vấn sản phẩm, đặt hàng hoặc trao đổi cơ hội hợp tác."
+      : "Contact ANH COFFEE about product guidance, orders, or partnership opportunities.",
   };
 }
 
@@ -158,7 +158,7 @@ export default async function ContactPage({
                 <Text as="p" scale="body-sm" className="text-on-surface-variant mt-space-xs">{labels.socialDescription}</Text>
               </div>
               <div className="grid grid-cols-2 gap-space-sm">
-                {socialLinks.map(({ name, label, handle, href }) => (
+                {socialLinks.filter((link) => !link.hidden).map(({ name, label, handle, href }) => (
                   <a
                     key={name}
                     href={href}
@@ -209,7 +209,7 @@ export default async function ContactPage({
             <div className="flex items-start justify-between gap-space-md">
               <div>
                 <Text as="span" scale="label-sm" className="text-primary uppercase tracking-[0.16em]">{labels.atelier}</Text>
-                <Text as="h3" scale="title-lg" className="text-on-surface mt-space-xs">ORBIS COFFEE — Đồng Khởi</Text>
+                <Text as="h3" scale="title-lg" className="text-on-surface mt-space-xs">ANH COFFEE — Đồng Khởi</Text>
               </div>
               <Icon name="mapPin" className="w-7 h-7 text-primary shrink-0" />
             </div>

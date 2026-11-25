@@ -6,17 +6,17 @@
       "contact": "Liên Hệ"
     },
     "header": {
-      "tagline": "Vietnamese Terroir",
+      "tagline": "A product of ORBIS",
       "cta": "Khám Phá Sản Phẩm"
     },
     "hero": {
       "eyebrow": "Cà Phê Đặc Sản Việt Nam — Buôn Ma Thuột & Đà Lạt",
-      "title": "Hương Vị Cà Phê Việt, Tinh Hoa Hội Tụ.",
-      "titleLead1": "Hương Vị ",
-      "titleBrush": "Cà Phê Việt",
-      "titleLine1Suffix": ",",
-      "titleLine2": "Tinh Hoa Hội Tụ.",
-      "description": "Những hạt Robusta thượng hạng từ cao nguyên đất đỏ và Arabica vi khí hậu Cầu Đất, được rang mộc thủ công nhằm tôn vinh nét văn hóa thưởng thức cà phê nguyên bản.",
+      "title": "Khám phá hương vị cà phê Việt Nam theo cách riêng của bạn.",
+      "titleLead1": "Khám phá hương vị ",
+      "titleBrush": "cà phê Việt Nam",
+      "titleLine1Suffix": "",
+      "titleLine2": "theo cách riêng của bạn.",
+      "description": "Từ những vùng nguyên liệu cà phê trù phú của Việt Nam, ANH COFFEE mang đến những sản phẩm cà phê được tuyển chọn kỹ lưỡng, lưu giữ hương vị đặc trưng và lan tỏa giá trị cà phê Việt đến người yêu cà phê.",
       "ctaPrimary": "Khám Phá Sản Phẩm",
       "ctaSecondary": "Câu Chuyện Của Chúng Tôi",
       "stats": [
@@ -32,7 +32,7 @@
       "eyebrow": "Nguồn Gốc & Tâm Huyết",
       "title": "Khởi sinh từ lòng đất bazan và niềm đam mê hạt cà phê Việt.",
       "paragraphs": [
-        "Việt Nam sở hữu một nền văn hóa cà phê độc đáo và lâu đời bậc nhất thế giới, được nuôi dưỡng bởi các dải đất đỏ bazan màu mỡ trên cao nguyên miền Trung. Trong nhiều thập kỷ, vẻ đẹp hương thơm phong phú cùng vị ngọt tự nhiên của các giống cà phê quý thường bị ẩn sau lối rang đậm công nghiệp. ORBIS ra đời với khát khao giải phóng trọn vẹn bản sắc nguyên bản của vùng đất trù phú này.",
+        "Việt Nam sở hữu một nền văn hóa cà phê độc đáo và lâu đời bậc nhất thế giới, được nuôi dưỡng bởi các dải đất đỏ bazan màu mỡ trên cao nguyên miền Trung. Trong nhiều thập kỷ, vẻ đẹp hương thơm phong phú cùng vị ngọt tự nhiên của các giống cà phê quý thường bị ẩn sau lối rang đậm công nghiệp. ANH COFFEE ra đời với khát khao giải phóng trọn vẹn bản sắc nguyên bản của vùng đất trù phú này.",
         "Hợp tác trực tiếp với các nông hộ gắn bó qua nhiều thế hệ — những người chỉ tỉ mẩn hái từng quả chín mọng đỏ, chúng tôi cam kết canh tác dưới bóng râm bền vững cùng phương pháp lên men tự nhiên nghiêm ngặt. Trải qua quá trình rang mộc thủ công trong mẻ nhỏ, từng hạt cà phê giữ trọn hương hạt dẻ nướng, cacao đen thuần khiết, mật ong rừng cùng dư vị hoa quả chín mọng ngọt ngào."
       ],
       "terroirLabel": "Terroir Identity",
@@ -89,7 +89,7 @@
     "cta": {
       "eyebrow": "Hương Vị Cao Nguyên",
       "title": "Khám phá hương vị cà phê dành cho bạn.",
-      "description": "Khám phá bộ sưu tập cà phê ORBIS COFFEE và tìm hương vị phù hợp với gu thưởng thức của riêng bạn.",
+      "description": "Khám phá bộ sưu tập cà phê ANH COFFEE và tìm hương vị phù hợp với gu thưởng thức của riêng bạn.",
       "ctaPrimary": "Khám Phá Sản Phẩm",
       "ctaSecondary": "Liên Hệ Với Chúng Tôi"
     },
@@ -98,11 +98,11 @@
       "exploreTitle": "Khám Phá",
       "exploreLinks": ["Trang Chủ", "Bộ Sưu Tập Cà Phê", "Nghi Thức Pha Chế"],
       "contactTitle": "Boutique & Liên Hệ",
-      "contactName": "Orbis Atelier & Flagship Salon",
+      "contactName": "ANH COFFEE Atelier & Flagship Salon",
       "address": "68 Đồng Khởi, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh",
-      "email": "atelier@orbiscoffee.vn",
+      "email": "coffeebyorbis@gmail.com",
       "phone": "+84 (0) 28 3822 6868",
-      "copyright": "© 2025 ORBIS COFFEE Co., Ltd. Tất cả quyền được bảo lưu.",
+      "copyright": "© 2025 ANH COFFEE. Tất cả quyền được bảo lưu.",
       "tagline": "Tinh Hoa Cà Phê Việt Nam"
     }
   },
@@ -113,17 +113,17 @@
       "contact": "Contact"
     },
     "header": {
-      "tagline": "Vietnamese Terroir",
+      "tagline": "A product of ORBIS",
       "cta": "Explore Products"
     },
     "hero": {
       "eyebrow": "Vietnamese Specialty Coffee — Buôn Ma Thuột & Đà Lạt",
-      "title": "The Taste of Vietnam, Refined.",
-      "titleLead1": "The Taste of ",
-      "titleBrush": "Vietnam",
+      "title": "Discover the taste of Vietnamese coffee, your way.",
+      "titleLead1": "Discover the taste of ",
+      "titleBrush": "Vietnamese coffee",
       "titleLine1Suffix": ",",
-      "titleLine2": "Refined.",
-      "description": "Premium Robusta from the red basalt highlands and micro-climate Cầu Đất Arabica, hand roasted to honor authentic Vietnamese coffee culture.",
+      "titleLine2": "your way.",
+      "description": "From Vietnam's fertile coffee-growing regions, ANH COFFEE brings carefully selected coffee that preserves its distinctive flavor and shares the value of Vietnamese coffee with those who love it.",
       "ctaPrimary": "Explore Products",
       "ctaSecondary": "Our Story",
       "stats": [
@@ -139,7 +139,7 @@
       "eyebrow": "Origin & Dedication",
       "title": "Born from basalt soil and a passion for Vietnamese coffee.",
       "paragraphs": [
-        "Vietnam holds one of the world's oldest and most distinctive coffee cultures, nurtured by the fertile red basalt soil of the Central Highlands. For decades, the rich aroma and natural sweetness of these prized varietals were often hidden behind heavy industrial roasting. ORBIS was founded to fully unlock the authentic identity of this abundant land.",
+        "Vietnam holds one of the world's oldest and most distinctive coffee cultures, nurtured by the fertile red basalt soil of the Central Highlands. For decades, the rich aroma and natural sweetness of these prized varietals were often hidden behind heavy industrial roasting. ANH COFFEE was founded to fully unlock the authentic identity of this abundant land.",
         "Working directly with farming families across generations — who hand-pick only the ripest red cherries — we commit to sustainable shade-grown cultivation and strict natural fermentation methods. Roasted by hand in small batches, every bean retains notes of toasted hazelnut, pure dark cacao, wild honey, and a lingering sweet fruit finish."
       ],
       "terroirLabel": "Terroir Identity",
@@ -196,7 +196,7 @@
     "cta": {
       "eyebrow": "Highland Flavor",
       "title": "Discover the coffee that's made for you.",
-      "description": "Explore the ORBIS COFFEE collection and find the flavor that matches your palate.",
+      "description": "Explore the ANH COFFEE collection and find the flavor that matches your palate.",
       "ctaPrimary": "Explore Products",
       "ctaSecondary": "Contact Us"
     },
@@ -205,11 +205,11 @@
       "exploreTitle": "Explore",
       "exploreLinks": ["Home", "Coffee Collection", "Brewing Rituals"],
       "contactTitle": "Boutique & Contact",
-      "contactName": "Orbis Atelier & Flagship Salon",
+      "contactName": "ANH COFFEE Atelier & Flagship Salon",
       "address": "68 Dong Khoi, Ben Nghe Ward, District 1, Ho Chi Minh City",
-      "email": "atelier@orbiscoffee.vn",
+      "email": "coffeebyorbis@gmail.com",
       "phone": "+84 (0) 28 3822 6868",
-      "copyright": "© 2025 ORBIS COFFEE Co., Ltd. All rights reserved.",
+      "copyright": "© 2025 ANH COFFEE. All rights reserved.",
       "tagline": "The Essence of Vietnamese Coffee"
     }
   }

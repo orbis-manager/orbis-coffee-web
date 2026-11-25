@@ -26,7 +26,7 @@ export default function Header({
           <Logo className="h-9 w-9 shrink-0" />
           <span className="flex flex-col items-start">
             <span className="font-display text-headline-sm tracking-tight text-on-surface uppercase">
-              ORBIS COFFEE
+              ANH COFFEE
             </span>
             <span className="font-sans text-label-sm tracking-[0.2em] text-primary uppercase">
               {dict.header.tagline}

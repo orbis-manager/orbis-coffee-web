@@ -15,7 +15,7 @@ const copy = {
     profile: "Hồ sơ hương vị", profileNote: "Gợi ý hương vị theo mô tả sản phẩm",
     tasting: "Đặc điểm", type: "Dòng cà phê", size: "Khối lượng", roast: "Rang mộc thủ công",
     storyEyebrow: "Từ vùng trồng đến tách cà phê", storyTitle: "Một sắc thái riêng của cà phê Việt",
-    story: "Mỗi sản phẩm ORBIS được tuyển chọn để giữ lại nét đặc trưng của giống hạt và vùng trồng. Thưởng thức nguyên chất để cảm nhận trọn vẹn hương vị riêng của dòng cà phê này.",
+    story: "Mỗi sản phẩm ANH COFFEE được tuyển chọn để giữ lại nét đặc trưng của giống hạt và vùng trồng. Thưởng thức nguyên chất để cảm nhận trọn vẹn hương vị riêng của dòng cà phê này.",
     contact: "Liên hệ đặt hàng", back: "Quay lại sản phẩm", relatedEyebrow: "Khám phá thêm",
     relatedTitle: "Những lựa chọn khác", trustOrigin: "Tuyển chọn nguồn gốc", trustRoast: "Rang mộc", trustFresh: "Đóng gói giữ hương",
     description: "Câu chuyện hương vị",
@@ -25,7 +25,7 @@ const copy = {
     profile: "Flavor profile", profileNote: "Tasting notes from the product description",
     tasting: "Character", type: "Coffee type", size: "Pack size", roast: "Artisan roasted",
     storyEyebrow: "From origin to cup", storyTitle: "A distinct expression of Vietnamese coffee",
-    story: "Each ORBIS coffee is selected to preserve the character of its varietal and growing region. Enjoy it on its own to experience the distinctive flavor of this coffee.",
+    story: "Each ANH COFFEE product is selected to preserve the character of its varietal and growing region. Enjoy it on its own to experience the distinctive flavor of this coffee.",
     contact: "Enquire about this coffee", back: "Back to products", relatedEyebrow: "Explore more",
     relatedTitle: "More from the collection", trustOrigin: "Selected by origin", trustRoast: "Artisan roasted", trustFresh: "Sealed for freshness",
     description: "The flavor story",
@@ -132,7 +132,7 @@ export default function ProductDetail({
               </div>
 
               <div className="flex flex-col sm:flex-row items-stretch gap-space-md pt-space-xs">
-                <Button href="mailto:atelier@orbiscoffee.vn" variant="primary" size="lg" className="sm:flex-1">{labels.contact}</Button>
+                <Button href="mailto:coffeebyorbis@gmail.com" variant="primary" size="lg" className="sm:flex-1">{labels.contact}</Button>
                 <Button href={`/${locale}/san-pham`} variant="text" size="lg"><Icon name="arrowForward" className="w-4 h-4 rotate-180" />{labels.back}</Button>
               </div>
               <div className="grid grid-cols-3 gap-space-xs pt-space-xs">

@@ -10,12 +10,12 @@ import Text from "@/components/ui/Text";
 import type { Product } from "@/content/products";
 import type { Locale } from "@/lib/i18n";
 
-type Category = "all" | "robusta" | "arabica" | "blends";
+type Category = "all" | "arabica" | "robusta" | "culi";
 
 const copy = {
   vi: {
     eyebrow: "Tuyển chọn • Thổ nhưỡng cà phê Việt Nam",
-    title: "Bộ sưu tập cà phê ORBIS",
+    title: "Bộ sưu tập cà phê ANH COFFEE",
     titleLine1: "Bộ Sưu Tập",
     titleLine2Before: "",
     titleMark: "Cà Phê Việt",
@@ -26,13 +26,13 @@ const copy = {
       { value: "1.650m", label: "Độ cao tối đa", count: 1650, suffix: "m" },
       { value: "100%", label: "Hái chín thủ công" },
     ],
-    filters: ["Tất cả", "Robusta", "Arabica", "Phối trộn"] as const,
+    filters: ["Tất cả", "Arabica", "Robusta", "Culi"] as const,
     count: "sản phẩm được tuyển chọn",
     sort: "Sắp xếp",
     featured: "Nổi bật",
     low: "Giá thấp đến cao",
     high: "Giá cao đến thấp",
-    storyEyebrow: "Triết lý ORBIS",
+    storyEyebrow: "Triết lý ANH COFFEE",
     storyTitle: "Tôn vinh bản sắc thổ nhưỡng Việt Nam",
     story: "Chúng tôi tuyển chọn những hạt cà phê đặc trưng từ các vùng trồng giàu bản sắc, sau đó rang mộc theo từng mẻ nhỏ để làm nổi bật hương vị tự nhiên trong mỗi tách cà phê.",
     featureOne: "Tuyển chọn theo vùng trồng",
@@ -40,30 +40,30 @@ const copy = {
     featureTwo: "Rang mộc mẻ nhỏ",
     featureTwoText: "Tôn trọng đặc tính tự nhiên của hạt trong từng mẻ rang.",
     contactTitle: "Bạn cần tư vấn chọn cà phê?",
-    contactText: "ORBIS sẵn sàng hỗ trợ lựa chọn hạt, mức rang và cách pha phù hợp với gu thưởng thức của bạn.",
-    contact: "Liên hệ ORBIS",
+    contactText: "ANH COFFEE sẵn sàng hỗ trợ lựa chọn hạt, mức rang và cách pha phù hợp với gu thưởng thức của bạn.",
+    contact: "Liên hệ ANH COFFEE",
     empty: "Chưa có sản phẩm trong danh mục này.",
   },
   en: {
     eyebrow: "Curated selection • Vietnamese coffee terroir",
-    title: "The ORBIS coffee collection",
-    titleLine1: "The ORBIS",
+    title: "The ANH COFFEE collection",
+    titleLine1: "ANH COFFEE",
     titleLine2Before: "",
-    titleMark: "Coffee",
-    titleLine2After: " Collection.",
+    titleMark: "Collection",
+    titleLine2After: ".",
     intro: "From Buôn Ma Thuột’s red basalt soil to the misty Cầu Đất highlands, every coffee captures a distinct expression of Vietnam.",
     facts: [
       { value: "2", label: "Growing regions" },
       { value: "1,650m", label: "Peak elevation", count: 1650, suffix: "m" },
       { value: "100%", label: "Hand-picked" },
     ],
-    filters: ["All coffee", "Robusta", "Arabica", "Blends"] as const,
+    filters: ["All coffee", "Arabica", "Robusta", "Culi"] as const,
     count: "curated coffees",
     sort: "Sort",
     featured: "Featured",
     low: "Price: low to high",
     high: "Price: high to low",
-    storyEyebrow: "The ORBIS approach",
+    storyEyebrow: "The ANH COFFEE approach",
     storyTitle: "Celebrating the character of Vietnamese terroir",
     story: "We select distinctive coffees from expressive growing regions, then roast in small batches to bring out the beans’ natural character in every cup.",
     featureOne: "Selected by origin",
@@ -71,18 +71,18 @@ const copy = {
     featureTwo: "Small-batch roasting",
     featureTwoText: "Every roast respects the beans’ natural qualities.",
     contactTitle: "Need help choosing your coffee?",
-    contactText: "ORBIS can help you find the beans, roast, and brew method that suit your taste.",
-    contact: "Contact ORBIS",
+    contactText: "ANH COFFEE can help you find the beans, roast, and brew method that suit your taste.",
+    contact: "Contact ANH COFFEE",
     empty: "There are no products in this category yet.",
   },
 };
 
-const categories = ["all", "robusta", "arabica", "blends"] as const;
+const categories = ["all", "arabica", "robusta", "culi"] as const;
 
 function categoryFor(product: Product): Exclude<Category, "all"> {
-  const category = product.category.en.toLowerCase();
-  if (category.includes("blend")) return "blends";
-  return category.includes("arabica") ? "arabica" : "robusta";
+  const text = `${product.category.en} ${product.name.en}`.toLowerCase();
+  if (text.includes("culi") || text.includes("peaberry")) return "culi";
+  return text.includes("arabica") ? "arabica" : "robusta";
 }
 
 export default function ProductCollection({
@@ -269,7 +269,7 @@ export default function ProductCollection({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl items-center">
             <div data-anim className="lg:col-span-6 relative aspect-[4/3] rounded-xl overflow-hidden bg-surface-container shadow-lg">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={products[0]?.image} alt={products[0]?.name[locale] ?? "ORBIS coffee"} className="w-full h-full object-cover" />
+              <img src={products[0]?.image} alt={products[0]?.name[locale] ?? "ANH COFFEE"} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent" />
               <Text as="span" scale="label-sm" className="absolute bottom-space-lg left-space-lg text-primary-fixed uppercase tracking-widest">{labels.storyEyebrow}</Text>
             </div>

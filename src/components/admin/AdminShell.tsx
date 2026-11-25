@@ -47,7 +47,7 @@ export default function AdminShell({
         <div>
           <Link href="/admin/dashboard" className="flex items-center gap-space-sm px-space-lg py-space-lg">
             <Logo className="w-9 h-9 text-primary" />
-            <span className="flex flex-col"><Text as="span" scale="title-lg" className="text-on-surface uppercase">ORBIS COFFEE</Text><Text as="span" scale="label-sm" className="text-primary">ADMINISTRATION</Text></span>
+            <span className="flex flex-col"><Text as="span" scale="title-lg" className="text-on-surface uppercase">ANH COFFEE</Text><Text as="span" scale="label-sm" className="text-primary">ADMINISTRATION</Text></span>
           </Link>
           <div className="px-space-md pb-space-sm"><Text as="span" scale="label-sm" className="text-outline uppercase tracking-[0.16em]">Workspace</Text></div>
           <nav aria-label="Admin navigation" className="flex flex-col gap-1 px-space-sm">{navigation()}</nav>
@@ -79,7 +79,7 @@ export default function AdminShell({
 
       <main className="min-h-screen bg-background px-space-md pb-space-2xl pt-[116px] md:ml-[260px] md:px-space-xl md:pt-[88px]">
         {children}
-        <footer className="mt-space-2xl border-t border-outline-variant/30 pt-space-md text-outline"><Text as="span" scale="label-sm">© 2026 ORBIS COFFEE · Vietnamese Terroir Admin</Text></footer>
+        <footer className="mt-space-2xl border-t border-outline-variant/30 pt-space-md text-outline"><Text as="span" scale="label-sm">© 2026 ANH COFFEE · Vietnamese Terroir Admin</Text></footer>
       </main>
     </div>
   );

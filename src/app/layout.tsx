@@ -14,8 +14,8 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Orbis Coffee",
-    template: "Orbis Coffee — %s",
+    default: "ANH COFFEE",
+    template: "ANH COFFEE — %s",
   },
 };
 

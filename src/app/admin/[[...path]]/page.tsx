@@ -2,7 +2,7 @@ import AdminPortal from "@/components/admin/AdminPortal";
 import { Suspense } from "react";
 
 export const metadata = {
-  title: "Admin | ORBIS COFFEE",
+  title: "Admin | ANH COFFEE",
   robots: { index: false, follow: false },
 };
 
