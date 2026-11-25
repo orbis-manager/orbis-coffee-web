@@ -168,7 +168,7 @@ export default function ProductDetail({
       </section>
 
       {relatedProducts.length > 0 && (
-        <section className="w-full max-w-[1200px] mx-auto px-gutter-desktop py-space-3xl">
+        <section className="w-full max-w-[1200px] mx-auto px-margin md:px-margin-tablet lg:px-gutter-desktop py-space-3xl">
           <div data-anim className="flex flex-col sm:flex-row sm:items-end justify-between gap-space-md mb-space-xl">
             <div>
               <Text as="span" scale="label-sm" className="text-primary uppercase tracking-[0.2em]">{labels.relatedEyebrow}</Text>

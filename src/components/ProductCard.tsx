@@ -69,7 +69,7 @@ export default function ProductCard({
             {product.notes[locale].map((note) => (
               <li
                 key={note}
-                className="px-space-sm py-1 rounded-full bg-secondary-container/40 font-sans text-label-sm text-on-secondary-container"
+                className="px-space-sm py-1 rounded-[9999px] bg-secondary-container/40 font-sans text-label-sm text-on-secondary-container"
               >
                 {note}
               </li>

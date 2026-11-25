@@ -35,6 +35,8 @@ const paths = {
   calendar: "M4 5h16v16H4V5Zm4-3v6m8-6v6M4 10h16",
   chart: "M4 19V5m0 14h17M8 15l4-4 3 2 5-6",
   close: "m6 6 12 12M18 6 6 18",
+  menu: "M4 7h16M4 12h16M4 17h16",
+  chevronDown: "m6 9 6 6 6-6",
   upload: "M12 16V4m-5 5 5-5 5 5M4 15v5h16v-5",
   archive: "M3 4h18v5H3V4Zm2 5v11h14V9m-9 4h4",
 } as const;

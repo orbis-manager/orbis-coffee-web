@@ -8,7 +8,7 @@ export default function Container({
   return (
     <div
       {...props}
-      className={cn("w-full max-w-[1200px] mx-auto px-gutter-desktop", className)}
+      className={cn("w-full max-w-[1200px] mx-auto px-margin md:px-margin-tablet lg:px-gutter-desktop", className)}
     />
   );
 }

@@ -97,6 +97,7 @@ export default function ProductCollection({
   const labels = copy[locale];
   const [category, setCategory] = useState<Category>("all");
   const [sort, setSort] = useState("featured");
+  const sortLabel = sort === "price-asc" ? labels.low : sort === "price-desc" ? labels.high : labels.featured;
 
   const visibleProducts = useMemo(() => {
     const filtered = category === "all" ? [...products] : products.filter((product) => categoryFor(product) === category);
@@ -126,34 +127,30 @@ export default function ProductCollection({
 
   // Cards fade/stagger in whenever the visible set changes (first paint,
   // category filter, or sort), mirroring sample/web/product-list-header.html.
+  // Each card is rendered with "plp-card-pre" (hidden) already present in its
+  // JSX, so the very first paint — SSR or a freshly-mounted card after a
+  // filter change — is guaranteed to show the hidden state. This effect only
+  // ever *removes* that class, staggered per card; because useEffect always
+  // runs after the browser has painted, there is no race to lose (unlike
+  // adding the hidden class imperatively here and immediately racing to
+  // remove it again, which is what made the very first card's reveal
+  // disappear entirely while later ones merely "popped" instead of fading).
   const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const grid = gridRef.current;
     if (!grid) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
     const cards = Array.from(grid.querySelectorAll<HTMLElement>(".plp-card"));
-    cards.forEach((card) => card.classList.add("plp-card-pre"));
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries
-          .filter((entry) => entry.isIntersecting)
-          .forEach((entry, i) => {
-            const card = entry.target as HTMLElement;
-            card.style.transitionDelay = `${i * 90}ms`;
-            card.classList.remove("plp-card-pre");
-            io.unobserve(card);
-            setTimeout(() => {
-              card.style.transitionDelay = "";
-            }, 800);
-          });
-      },
-      { rootMargin: "0px 0px -10% 0px" }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      cards.forEach((card) => card.classList.remove("plp-card-pre"));
+      return;
+    }
+
+    const timeouts = cards.map((card, i) =>
+      setTimeout(() => card.classList.remove("plp-card-pre"), i * 90)
     );
-    cards.forEach((card) => io.observe(card));
-    return () => io.disconnect();
+    return () => timeouts.forEach(clearTimeout);
   }, [visibleProducts]);
 
   return (
@@ -221,9 +218,9 @@ export default function ProductCollection({
         <div
           data-reveal
           style={{ "--hero-d": "0.85s" } as React.CSSProperties}
-          className="sticky top-20 z-[5] flex flex-col md:flex-row md:items-center justify-between gap-space-md py-space-md border-y border-outline-variant/30 bg-surface/90 backdrop-blur-md"
+          className="sticky top-20 z-[5] flex flex-wrap items-center justify-between gap-x-space-lg gap-y-space-sm py-space-md border-y border-outline-variant/30 bg-surface/90 backdrop-blur-md"
         >
-          <div className="plp-pills relative flex flex-wrap items-center gap-1 p-1 bg-surface-container-high rounded-full" role="group" aria-label={labels.sort}>
+          <div className="plp-pills relative flex items-center gap-[2px] h-10 p-1 rounded-[9999px] bg-surface-container-high max-[720px]:w-full" role="group" aria-label={labels.sort}>
             <span ref={thumbRef} aria-hidden="true" className="plp-thumb" />
             {categories.map((item, index) => (
               <button
@@ -234,28 +231,37 @@ export default function ProductCollection({
                 }}
                 onClick={() => setCategory(item)}
                 aria-pressed={category === item}
-                className={`relative z-[1] px-space-lg py-space-xs rounded-full font-sans text-label-md tracking-wider uppercase transition-colors duration-300 ${category === item ? "text-inverse-on-surface" : "text-on-surface-variant hover:text-on-surface"}`}
+                className={`relative z-[1] px-space-md max-[720px]:flex-1 rounded-[9999px] font-sans text-label-md max-[720px]:text-[11.5px] tracking-[0.1em] max-[720px]:tracking-[0.06em] uppercase whitespace-nowrap transition-colors duration-300 ${category === item ? "text-inverse-on-surface" : "text-on-surface-variant hover:text-on-surface"}`}
               >
                 {labels.filters[index]}
               </button>
             ))}
           </div>
-          <div className="flex items-center justify-between md:justify-end gap-space-md">
+          <div className="flex items-center gap-space-md max-[720px]:w-full max-[720px]:justify-between">
             <Text as="span" scale="label-md" className="text-outline uppercase tracking-wider whitespace-nowrap"><strong className="text-on-surface">{visibleProducts.length}</strong> {labels.count}</Text>
-            <label className="flex items-center gap-space-xs bg-surface-container-lowest px-space-md py-space-xs rounded shadow-sm">
-              <span className="font-sans text-label-sm uppercase tracking-wider text-outline">{labels.sort}:</span>
-              <select value={sort} onChange={(event) => setSort(event.target.value)} className="bg-transparent font-sans text-label-md text-on-surface focus:outline-none cursor-pointer" aria-label={labels.sort}>
+            <label className="relative flex items-center h-10 pl-space-md pr-9 rounded-[9999px] bg-surface-container-high hover:bg-surface-container-highest transition-colors duration-200 cursor-pointer focus-within:ring-2 focus-within:ring-primary">
+              <span className="pointer-events-none flex items-center gap-space-xs whitespace-nowrap font-sans text-label-sm text-on-surface-variant">
+                <span className="uppercase tracking-wider">{labels.sort}</span>
+                <span className="font-semibold text-on-surface">{sortLabel}</span>
+              </span>
+              <select
+                value={sort}
+                onChange={(event) => setSort(event.target.value)}
+                aria-label={labels.sort}
+                className="absolute inset-0 w-full h-full cursor-pointer opacity-0"
+              >
                 <option value="featured">{labels.featured}</option>
                 <option value="price-asc">{labels.low}</option>
                 <option value="price-desc">{labels.high}</option>
               </select>
+              <Icon name="chevronDown" className="pointer-events-none absolute right-space-sm w-3.5 h-3.5 text-on-surface-variant" />
             </label>
           </div>
         </div>
         {visibleProducts.length ? (
           <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-xl items-stretch pt-space-xl">
             {visibleProducts.map((product) => (
-              <div key={product.slug} className="plp-card h-full">
+              <div key={product.slug} className="plp-card plp-card-pre h-full">
                 <ProductCard product={product} locale={locale} viewDetailLabel={viewDetailLabel} />
               </div>
             ))}
